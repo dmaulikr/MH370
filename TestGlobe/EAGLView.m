@@ -1073,37 +1073,37 @@ BOOL accelerometerEnabled = NO;
         case GS_AIRPORT_FIND:
             //[self drawAirport:&airports[gameAirport]];
 
-            [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
+            //[self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
 
             [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
             [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
-            [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
+            //[self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
 
             if (rotateTouch != -1) {
 
-                float deltax = (airports[gameAirport].sprite.x - _touches[rotateTouch].tx) / touchScale;
-                float deltay = (airports[gameAirport].sprite.y - _touches[rotateTouch].ty) / touchScale;
-                if (deltax < 0) deltax = -deltax;
-                if (deltay < 0) deltay = -deltay;
-                float gameTemperatureFloat = 4.999 - ((deltax + deltay) / 10);
-                gameTemperature = (int) gameTemperatureFloat;
-                if (gameTemperature < 0) gameTemperature = 0;
-                if (gameTemperature > 3) gameTemperature = 3;
+//                float deltax = (airports[gameAirport].sprite.x - _touches[rotateTouch].tx) / touchScale;
+//                float deltay = (airports[gameAirport].sprite.y - _touches[rotateTouch].ty) / touchScale;
+//                if (deltax < 0) deltax = -deltax;
+//                if (deltay < 0) deltay = -deltay;
+//                float gameTemperatureFloat = 4.999 - ((deltax + deltay) / 10);
+//                gameTemperature = (int) gameTemperatureFloat;
+//                if (gameTemperature < 0) gameTemperature = 0;
+//                if (gameTemperature > 3) gameTemperature = 3;
 
             }
 
-            [self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_thermometer1 + gameTemperature] X:/*_touches[rotateTouch].tx + 48*/295 Y:/*_touches[rotateTouch].ty - 48*/295 Z:0 SCALE:0.35f RL:&rl_front];
+//            [self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_thermometer1 + gameTemperature] X:/*_touches[rotateTouch].tx + 48*/295 Y:/*_touches[rotateTouch].ty - 48*/295 Z:0 SCALE:0.35f RL:&rl_front];
 
 
             break;
         case GS_AIRPORT_FOUND:
             //[self drawAirport:&airports[gameAirport]];
-            [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
-            [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_brandstar1 + (bransonAnimation >> 2)] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
+            //[self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
+            //[self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_brandstar1 + (bransonAnimation >> 2)] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
             //		[self drawNumber:(gameTimer/1000) X:32 Y:32 RL:&rl_gui];
             [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
             [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
-            [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
+            //[self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
             gameTemperature = 0;
             break;
         case GS_AIRPORT_RESULT:
