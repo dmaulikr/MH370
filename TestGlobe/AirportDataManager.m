@@ -6,10 +6,10 @@
 //
 //
 
-#warning This code is should be revised. It was written with very little time remaining. The refresh CoreData in particular.
+//#warning This code is should be revised. It was written with very little time remaining. The refresh CoreData in particular.
 
 #import "AirportDataManager.h"
-#import "VAAAppDelegate.h"
+#import "AppDelegate.h"
 
 #import "CoreDataStack.h"
 
@@ -121,7 +121,7 @@ static AirportDataManager *sharedInstance = nil;
 	
 	if (!_hasRefreshed) {
 		NSLog(@"Requesting Airports from Service");
-		NSURL *url = [NSURL URLWithString:kVAServiceURLSchedule];
+		NSURL *url = [NSURL URLWithString:@""];
 		NSMutableURLRequest *r = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0f];
 		NSURLConnection *c = [[NSURLConnection alloc] initWithRequest:r delegate:self];
 		[c release];
@@ -155,54 +155,54 @@ static AirportDataManager *sharedInstance = nil;
 - (void)processScheduleResponse:(NSMutableData *)d {
 
     //provide this
-    NSMutableArray *arrayOfSchedules = [NSMutableArray array];
-
-	NSError *err = nil;
-    CXMLDocument *schedules = [[CXMLDocument alloc] initWithData:d options:0 error:&err];
-	
-	if (err != nil) {
-		NSLog(@"THERE WAS AN ERROR PARSING THE XML, UPDATE FAILED");
-		return;
-	}
-	
-	
-    NSDictionary *mappings = [NSDictionary dictionaryWithObject:@"http://schemas.virgin-atlantic.com/IT.Lite/VJam/ScheduleInfo/2010/02/04" forKey:@"vjsi"];
-
-    NSString *startDate;
-    NSString *endDate;
-    NSString *seasonName;
-
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-dd"];
-
-    NSDate *now = [[[NSDate alloc] init] autorelease];
-    now = [format dateFromString:[format stringFromDate:now]];
-
-    NSArray *seasons = [schedules nodesForXPath:@"//vjsi:Season" namespaceMappings:mappings error:nil];
-    NSArray *flights;
-
-    for (CXMLElement *season in seasons) {
-
-        startDate = [[season attributeForName:@"startDate"] stringValue];
-        endDate = [[season attributeForName:@"endDate"] stringValue];
-        seasonName = [[season attributeForName:@"season"] stringValue];
-
-        NSComparisonResult dateCompare = [now compare:[format dateFromString:startDate]]; //The receiver is later in time than anotherDate, NSOrderedDescending
-        NSComparisonResult dateEndCompare = [now compare:[format dateFromString:endDate]];
-
-        if (((dateCompare == NSOrderedDescending) || (dateCompare == NSOrderedSame)) && ((dateEndCompare == NSOrderedAscending) || (dateEndCompare == NSOrderedSame))) {
-            flights = season.children;
-            for (CXMLElement *flight in flights) {
-                NSArray *entries = [flight children];
-                for (CXMLElement *entry in entries) {
-                    [arrayOfSchedules addObject:entry];
-                }
-            }
-        }
-    }
-	
-
-    [self updateCoreDataWithScheduleData:arrayOfSchedules];
+//    NSMutableArray *arrayOfSchedules = [NSMutableArray array];
+//
+//	NSError *err = nil;
+//    CXMLDocument *schedules = [[CXMLDocument alloc] initWithData:d options:0 error:&err];
+//	
+//	if (err != nil) {
+//		NSLog(@"THERE WAS AN ERROR PARSING THE XML, UPDATE FAILED");
+//		return;
+//	}
+//	
+//	
+//    NSDictionary *mappings = [NSDictionary dictionaryWithObject:@"http://schemas.virgin-atlantic.com/IT.Lite/VJam/ScheduleInfo/2010/02/04" forKey:@"vjsi"];
+//
+//    NSString *startDate;
+//    NSString *endDate;
+//    NSString *seasonName;
+//
+//    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+//    [format setDateFormat:@"yyyy-MM-dd"];
+//
+//    NSDate *now = [[[NSDate alloc] init] autorelease];
+//    now = [format dateFromString:[format stringFromDate:now]];
+//
+//    NSArray *seasons = [schedules nodesForXPath:@"//vjsi:Season" namespaceMappings:mappings error:nil];
+//    NSArray *flights;
+//
+//    for (CXMLElement *season in seasons) {
+//
+//        startDate = [[season attributeForName:@"startDate"] stringValue];
+//        endDate = [[season attributeForName:@"endDate"] stringValue];
+//        seasonName = [[season attributeForName:@"season"] stringValue];
+//
+//        NSComparisonResult dateCompare = [now compare:[format dateFromString:startDate]]; //The receiver is later in time than anotherDate, NSOrderedDescending
+//        NSComparisonResult dateEndCompare = [now compare:[format dateFromString:endDate]];
+//
+//        if (((dateCompare == NSOrderedDescending) || (dateCompare == NSOrderedSame)) && ((dateEndCompare == NSOrderedAscending) || (dateEndCompare == NSOrderedSame))) {
+//            flights = season.children;
+//            for (CXMLElement *flight in flights) {
+//                NSArray *entries = [flight children];
+//                for (CXMLElement *entry in entries) {
+//                    [arrayOfSchedules addObject:entry];
+//                }
+//            }
+//        }
+//    }
+//	
+//
+//    [self updateCoreDataWithScheduleData:arrayOfSchedules];
 
 }
 
@@ -283,46 +283,46 @@ static AirportDataManager *sharedInstance = nil;
 			
 			NSMutableArray *recentlyAddedAirportCodes = [NSMutableArray array];
 			
-            for (CXMLElement *schedule in arr) {
-
-                @autoreleasepool {
-
-                    //Process origin airport
-                    NSString *originCode = [[[schedule attributeForName:@"origin"] stringValue] retain];
-                    NSPredicate *pred = [airportByCodePredicate predicateWithSubstitutionVariables:[NSDictionary dictionaryWithObject:originCode forKey:@"CODE"]];
-                    Airport *existingOrigin = [[airports filteredArrayUsingPredicate:pred] lastObject];
-                    if (existingOrigin) {
-                        (existingOrigin.primary = [NSNumber numberWithBool:YES]);
-                    }
-                    else {
-						NSPredicate *recentPred = [NSPredicate predicateWithFormat:@"(self like[c] %@)", originCode];
-						NSArray *filteredRecent = [recentlyAddedAirportCodes filteredArrayUsingPredicate:recentPred];
-						if ([filteredRecent count] == 0) {
-							[self createNewAirportFromSchedule:schedule withDestination:NO inManagedObjectContext:context];
-							[recentlyAddedAirportCodes addObject:originCode];
-						}
-					}
-
-                    NSString *destinationCode = [[[schedule attributeForName:@"destination"] stringValue] retain];
-                    pred = [airportByCodePredicate predicateWithSubstitutionVariables:[NSDictionary dictionaryWithObject:destinationCode forKey:@"CODE"]];
-                    Airport *existingDest = [[airports filteredArrayUsingPredicate:pred] lastObject];
-                    if (existingDest) {
-                        existingDest.primary = [NSNumber numberWithBool:YES];
-                    }
-					else {
-						NSPredicate *recentPred = [NSPredicate predicateWithFormat:@"(self like[c] %@)", destinationCode];
-						NSArray *filteredRecent = [recentlyAddedAirportCodes filteredArrayUsingPredicate:recentPred];
-						if ([filteredRecent count] == 0) {
-							[self createNewAirportFromSchedule:schedule withDestination:YES inManagedObjectContext:context];
-							[recentlyAddedAirportCodes addObject:destinationCode];
-						}
-                    }
-
-                    [originCode release];
-                    [destinationCode release];
-                }
-
-            }
+//            for (CXMLElement *schedule in arr) {
+//
+//                @autoreleasepool {
+//
+//                    //Process origin airport
+//                    NSString *originCode = [[[schedule attributeForName:@"origin"] stringValue] retain];
+//                    NSPredicate *pred = [airportByCodePredicate predicateWithSubstitutionVariables:[NSDictionary dictionaryWithObject:originCode forKey:@"CODE"]];
+//                    Airport *existingOrigin = [[airports filteredArrayUsingPredicate:pred] lastObject];
+//                    if (existingOrigin) {
+//                        (existingOrigin.primary = [NSNumber numberWithBool:YES]);
+//                    }
+//                    else {
+//						NSPredicate *recentPred = [NSPredicate predicateWithFormat:@"(self like[c] %@)", originCode];
+//						NSArray *filteredRecent = [recentlyAddedAirportCodes filteredArrayUsingPredicate:recentPred];
+//						if ([filteredRecent count] == 0) {
+//							[self createNewAirportFromSchedule:schedule withDestination:NO inManagedObjectContext:context];
+//							[recentlyAddedAirportCodes addObject:originCode];
+//						}
+//					}
+//
+//                    NSString *destinationCode = [[[schedule attributeForName:@"destination"] stringValue] retain];
+//                    pred = [airportByCodePredicate predicateWithSubstitutionVariables:[NSDictionary dictionaryWithObject:destinationCode forKey:@"CODE"]];
+//                    Airport *existingDest = [[airports filteredArrayUsingPredicate:pred] lastObject];
+//                    if (existingDest) {
+//                        existingDest.primary = [NSNumber numberWithBool:YES];
+//                    }
+//					else {
+//						NSPredicate *recentPred = [NSPredicate predicateWithFormat:@"(self like[c] %@)", destinationCode];
+//						NSArray *filteredRecent = [recentlyAddedAirportCodes filteredArrayUsingPredicate:recentPred];
+//						if ([filteredRecent count] == 0) {
+//							[self createNewAirportFromSchedule:schedule withDestination:YES inManagedObjectContext:context];
+//							[recentlyAddedAirportCodes addObject:destinationCode];
+//						}
+//                    }
+//
+//                    [originCode release];
+//                    [destinationCode release];
+//                }
+//
+//            }
 
             [context save:&err];
             [context release];
@@ -342,35 +342,35 @@ static AirportDataManager *sharedInstance = nil;
 }
 
 
-- (Airport *)createNewAirportFromSchedule:(CXMLElement *)el withDestination:(BOOL)dest inManagedObjectContext:(NSManagedObjectContext *)context {
-
-    
-    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-    [f setNumberStyle:NSNumberFormatterDecimalStyle];
-	
-    Airport *ap = [NSEntityDescription insertNewObjectForEntityForName:[NSString stringWithFormat:@"%@", [Airport class]] inManagedObjectContext:context];
-    ap.primary = [NSNumber numberWithBool:YES];
-
-    if (dest) {
-        ap.code = [[el attributeForName:@"destination"] stringValue];
-        ap.name = [[el attributeForName:@"destinationName"] stringValue];
-        ap.capsname = [[[el attributeForName:@"destinationName"] stringValue] uppercaseString];
-        ap.latitude = [f numberFromString:[[el attributeForName:@"destinationY"] stringValue]];
-        ap.longitude = [f numberFromString:[[el attributeForName:@"destinationX"] stringValue]];
-    } else {
-        ap.code = [[el attributeForName:@"origin"] stringValue];
-        ap.name = [[el attributeForName:@"originName"] stringValue];
-        ap.capsname = [[[el attributeForName:@"originName"] stringValue] uppercaseString];
-        ap.latitude = [f numberFromString:[[el attributeForName:@"originY"] stringValue]];
-        ap.longitude = [f numberFromString:[[el attributeForName:@"originX"] stringValue]];
-    }
-	
-	NSLog(@"Creating new Airport in CoreData: %@", ap.name);
-	
-    [f release];
-    return ap;
-
-}
+//- (Airport *)createNewAirportFromSchedule:(CXMLElement *)el withDestination:(BOOL)dest inManagedObjectContext:(NSManagedObjectContext *)context {
+//
+//    
+//    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+//    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+//	
+//    Airport *ap = [NSEntityDescription insertNewObjectForEntityForName:[NSString stringWithFormat:@"%@", [Airport class]] inManagedObjectContext:context];
+//    ap.primary = [NSNumber numberWithBool:YES];
+//
+//    if (dest) {
+//        ap.code = [[el attributeForName:@"destination"] stringValue];
+//        ap.name = [[el attributeForName:@"destinationName"] stringValue];
+//        ap.capsname = [[[el attributeForName:@"destinationName"] stringValue] uppercaseString];
+//        ap.latitude = [f numberFromString:[[el attributeForName:@"destinationY"] stringValue]];
+//        ap.longitude = [f numberFromString:[[el attributeForName:@"destinationX"] stringValue]];
+//    } else {
+//        ap.code = [[el attributeForName:@"origin"] stringValue];
+//        ap.name = [[el attributeForName:@"originName"] stringValue];
+//        ap.capsname = [[[el attributeForName:@"originName"] stringValue] uppercaseString];
+//        ap.latitude = [f numberFromString:[[el attributeForName:@"originY"] stringValue]];
+//        ap.longitude = [f numberFromString:[[el attributeForName:@"originX"] stringValue]];
+//    }
+//	
+//	NSLog(@"Creating new Airport in CoreData: %@", ap.name);
+//	
+//    [f release];
+//    return ap;
+//
+//}
 
 #pragma mark Airport Lookups
 
