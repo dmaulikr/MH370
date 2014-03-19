@@ -7,9 +7,9 @@
 //
 
 #import "gameViewController.h"
-#import "VAAAppDelegate.h"
-#import "UIWaracleButton.h"
-#import "UIWaracleSmallButton.h"
+#import "AppDelegate.h"
+//#import "UIWaracleButton.h"
+//#import "UIWaracleSmallButton.h"
 
 #define GAME_VIEW_CONT_ENABLE_PRINTS 0
 
@@ -29,15 +29,15 @@
 	
     self = [super init];
 	if (self != nil) {
-		VAAAppDelegate* delegate = (VAAAppDelegate*)[[UIApplication sharedApplication]delegate];
+		AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
 		
-        if (delegate.bSupportsAPNS) {
-			//glView = delegate.glView;
-            glView= [[EAGLView alloc] initWithFrame:CGRectMake(0, 0, 320, 382)];
-		}
-        else {
+//        if (delegate.bSupportsAPNS) {
+//			//glView = delegate.glView;
+//            glView= [[EAGLView alloc] initWithFrame:CGRectMake(0, 0, 320, 382)];
+//		}
+//        else {
 			glView= [[EAGLView alloc] initWithFrame:CGRectMake(0, 0, 320, 382)];
-		}		
+		//}
 		self.view =glView;
         
 		[self initGame:gMode];
@@ -88,7 +88,7 @@
 
 	glView.globeMode =GLOBE_MODE_TARGET;
 	glView.animationInterval = 1.0 / 60.0;
-	VAAAppDelegate * delegate = (VAAAppDelegate*) [[UIApplication sharedApplication]delegate];
+	AppDelegate * delegate = (AppDelegate*) [[UIApplication sharedApplication]delegate];
 	[glView setAppPtr:delegate];
 	//make sure it loads in the textures for the games
 	glView.first = NO;
@@ -266,13 +266,13 @@
 
 
 - (void)dealloc {
-  [alert release];
-  [super dealloc];
+//  [alert release];
+//  [super dealloc];
 }
 
 -(void)showCustomAlert:(NSString*)text withButton1:(NSString*)text1 withButton1:(NSString*)text2
 {
-	self.alert = [[[CustomAlertView alloc] init] autorelease];
+	self.alert = [[CustomAlertView alloc] init];
 	alert.delegate = self;
 	[alert show];	
 	
@@ -284,19 +284,19 @@
 	titlelabel.textColor = [UIColor whiteColor];
 	titlelabel.backgroundColor = [UIColor clearColor];
 	[alert.alertView addSubview:titlelabel];
-	[titlelabel release];
+	//[titlelabel release];
 	
-	UIWaracleSmallButton* cancel = [[UIWaracleSmallButton alloc]initWithFrame:CGRectMake(40,130, 100, 42)];									
-	[cancel setTitle:text1 forState:UIControlStateNormal];
-	[cancel addTarget:self action:@selector(quit)forControlEvents:UIControlEventTouchUpInside];
-	[alert.alertView addSubview:cancel];
-	[cancel release];
-	
-	UIWaracleSmallButton* showSchedule = [[UIWaracleSmallButton alloc]initWithFrame:CGRectMake(150,130, 100, 42)];
-	[showSchedule setTitle:text2 forState:UIControlStateNormal];
-	[showSchedule addTarget:self action:@selector(continueGame)forControlEvents:UIControlEventTouchUpInside];
-	[alert.alertView addSubview:showSchedule];
-	[showSchedule release];
+//	UIWaracleSmallButton* cancel = [[UIWaracleSmallButton alloc]initWithFrame:CGRectMake(40,130, 100, 42)];									
+//	[cancel setTitle:text1 forState:UIControlStateNormal];
+//	[cancel addTarget:self action:@selector(quit)forControlEvents:UIControlEventTouchUpInside];
+//	[alert.alertView addSubview:cancel];
+//	[cancel release];
+//	
+//	UIWaracleSmallButton* showSchedule = [[UIWaracleSmallButton alloc]initWithFrame:CGRectMake(150,130, 100, 42)];
+//	[showSchedule setTitle:text2 forState:UIControlStateNormal];
+//	[showSchedule addTarget:self action:@selector(continueGame)forControlEvents:UIControlEventTouchUpInside];
+//	[alert.alertView addSubview:showSchedule];
+//	[showSchedule release];
 }
 
 -(void)quit

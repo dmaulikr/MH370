@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "EAGLView.h"
-//#import "CustomAlertView.h"
+#import "CustomAlertView.h"
 
 
 // this class creates and manages all of the interface stuff for the game it deals with switching between the game states and 
 //drawing text to the screen it does not deal with rendering the game only managing its states.
 
 
-@interface GameViewController : UIViewController {//<CustomAlertViewDelegate>{
+@interface GameViewController : UIViewController <CustomAlertViewDelegate>{
 	EAGLView	*glView;// the actual view the globe is rendered in
 	int gameMode;//0= balloon 1 = airport
-	//CustomAlertView* alert;
+	CustomAlertView* alert;
 	bool airport;
 }
 

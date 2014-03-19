@@ -12,7 +12,7 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
-#import "VAAAppDelegate.h"
+#import "AppDelegate.h"
 
 #include "GlobeModel.h"
 #include "AirportCoords.h"
@@ -162,7 +162,7 @@ typedef struct
 typedef struct {
     float north;
     float east;
-    NSString * name;
+    __unsafe_unretained NSString * name;
     sprite_t sprite;
     GLubyte r,g,b;
     float screen_x,screen_y,screen_z;
@@ -187,7 +187,7 @@ typedef struct
 typedef struct
 {
 		BOOL used;
-		NSString * name;
+		__unsafe_unretained NSString * name;
 		float north;
 		float east;
 		float altitude;
@@ -196,7 +196,7 @@ typedef struct
 		GLubyte r,g,b;
 		float screen_x,screen_y,screen_z;
 		
-		Aircraft * ac;
+		//Aircraft * ac;
 		
 } plane_t;
 
@@ -208,20 +208,20 @@ typedef struct
 		float altitude;
 		float dnorth;
 		float deast;
-		NSString * name;
+		__unsafe_unretained NSString * name;
 		sprite_t sprite;
 		GLubyte r,g,b;
 		float screen_x,screen_y,screen_z;
 } gameobj_t;
 
 
-@interface EAGLView : UIView <UIAccelerometerDelegate, AirPortDataManagerDelegate> {
+@interface EAGLView : UIView {//<UIAccelerometerDelegate, AirPortDataManagerDelegate> {
     
 @private
 	bool drawFrame;
 	bool drawingBalloon;
-	VAAAppDelegate * appPtr;
-	UIViewController * interface;
+	AppDelegate * appPtr;
+	__unsafe_unretained UIViewController * interface;
 
     /* The pixel dimensions of the backbuffer */
     GLint backingWidth;
@@ -235,7 +235,7 @@ typedef struct
     /* OpenGL name for the depth buffer that is attached to viewFramebuffer, if it exists (0 if it does not exist) */
     GLuint depthRenderbuffer;
     
-    NSTimer *animationTimer;
+    __unsafe_unretained NSTimer *animationTimer;
     NSTimeInterval animationInterval;
 
 	int ticks;
@@ -322,7 +322,7 @@ typedef struct
 	NSString*	myAirport2;
 	NSString*	myAirport3;
 	
-	Sky * sky;
+	//Sky * sky;
 	BOOL updateDraw;
 	BOOL drawAirportShortName;
 	NSMutableArray* airportLabels;
@@ -400,9 +400,9 @@ typedef struct
 - (BOOL)drawGraphicIndices:(graphic_t *) g;
 
 -(int) findAirportWithName:(NSString *)name;
--(void) updatePlane:(int)pi withData:(Aircraft *)ac;
+//-(void) updatePlane:(int)pi withData:(Aircraft *)ac;
 -(int) findPlaneWithName:(NSString *)str;
--(int)	addPlane:(Aircraft *)ac;
+//-(int)	addPlane:(Aircraft *)ac;
 
 -(void) clearTouches;
 
@@ -420,8 +420,8 @@ typedef struct
 -(void)	processBalloonGame;
 -(void)	initTrackPlane:(NSString *)plane_name;
 -(void) processTrackPlane;
--(void) newPlaneData:(Aircraft *)ac;
--(void) setAppPtr:(VAAAppDelegate*)newParent;
+//-(void) newPlaneData:(Aircraft *)ac;
+-(void) setAppPtr:(AppDelegate*)newParent;
 
 -(void) initFreeMode;
 

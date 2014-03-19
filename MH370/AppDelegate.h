@@ -6,10 +6,23 @@
 //  Copyright (c) 2014 soma. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import <UIKit/UIKit.h>
+#import "GameTextController.h"
+//#import "EAGLView.h"
+
+@class EAGLView;
+@class GameTextController;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+    
+    GameTextController			*gameTextController;
+    EAGLView					*glView;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+
+- (void) showWheresRichardIntro;
+- (BOOL) nextGameState;
 
 @end

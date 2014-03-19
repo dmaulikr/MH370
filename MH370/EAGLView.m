@@ -10,7 +10,7 @@
 
 #import "EAGLView.h"
 #import "gameViewController.h"
-#import "GlobeViewController.h"
+//#import "GlobeViewController.h"
 
 #define EAGLVIEW_ENABLE_PRINTS        0
 
@@ -33,7 +33,7 @@
 
 - (void)drawQuad;
 
-- (GlobeViewController *)globeInterface;
+//- (GlobeViewController *)globeInterface;
 
 - (GameViewController *)gameInterface;
 
@@ -66,83 +66,83 @@ short shakes = 0;
 BOOL accelerometerEnabled = NO;
 
 
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
-    if (self.animationTimer == nil) {
-#if EAGLVIEW_ENABLE_PRINTS
-		NSLog(@"Globe not visible, ignoring shake...");
-#endif
-        return;
-    }
-
-    UIAccelerationValue length, x, y, z;
-    CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
-
-    //Use a basic high-pass filter to remove the influence of the gravity
-    myAccelerometer[0] = acceleration.x * kFilteringFactor + myAccelerometer[0] * (1.0 - kFilteringFactor);
-    myAccelerometer[1] = acceleration.y * kFilteringFactor + myAccelerometer[1] * (1.0 - kFilteringFactor);
-    myAccelerometer[2] = acceleration.z * kFilteringFactor + myAccelerometer[2] * (1.0 - kFilteringFactor);
-    // Compute values for the three axes of the acceleromater
-    x = acceleration.x - myAccelerometer[0];
-    y = acceleration.y - myAccelerometer[0];
-    z = acceleration.z - myAccelerometer[0];
-
-    //Compute the intensity of the current acceleration 
-    length = sqrt(x * x + y * y + z * z);
-    // If above a given threshold, play the erase sounds and erase the drawing view
-    if ((length >= kEraseAccelerationThreshold) && (currentTime > (lastTime + kMinEraseInterval))) {
-        if (currentTime > (lastTime + kMaxEraseInterval)) {
-            //too slow
-            shakes = 0;
-#if EAGLVIEW_ENABLE_PRINTS
-			NSLog(@"Shake too slow, resetting...");
-#endif
-        }
-        else {
-            shakes++;
-            if (shakes >= 2) {
-                shakes = 0;
-                [appPtr showGlobewithAircraft:[sky getRndPlane]];
-#if EAGLVIEW_ENABLE_PRINTS
-				NSLog(@"Shakes activated...");
-#endif
-            }
-        }
-        lastTime = CFAbsoluteTimeGetCurrent();
-    }
-}
-
-
-- (void)startAccelerometer {
-    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
-    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
-    accelerometerEnabled = YES;
-}
+//- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+//    if (self.animationTimer == nil) {
+//#if EAGLVIEW_ENABLE_PRINTS
+//		NSLog(@"Globe not visible, ignoring shake...");
+//#endif
+//        return;
+//    }
+//
+//    UIAccelerationValue length, x, y, z;
+//    CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
+//
+//    //Use a basic high-pass filter to remove the influence of the gravity
+//    myAccelerometer[0] = acceleration.x * kFilteringFactor + myAccelerometer[0] * (1.0 - kFilteringFactor);
+//    myAccelerometer[1] = acceleration.y * kFilteringFactor + myAccelerometer[1] * (1.0 - kFilteringFactor);
+//    myAccelerometer[2] = acceleration.z * kFilteringFactor + myAccelerometer[2] * (1.0 - kFilteringFactor);
+//    // Compute values for the three axes of the acceleromater
+//    x = acceleration.x - myAccelerometer[0];
+//    y = acceleration.y - myAccelerometer[0];
+//    z = acceleration.z - myAccelerometer[0];
+//
+//    //Compute the intensity of the current acceleration 
+//    length = sqrt(x * x + y * y + z * z);
+//    // If above a given threshold, play the erase sounds and erase the drawing view
+//    if ((length >= kEraseAccelerationThreshold) && (currentTime > (lastTime + kMinEraseInterval))) {
+//        if (currentTime > (lastTime + kMaxEraseInterval)) {
+//            //too slow
+//            shakes = 0;
+//#if EAGLVIEW_ENABLE_PRINTS
+//			NSLog(@"Shake too slow, resetting...");
+//#endif
+//        }
+//        else {
+//            shakes++;
+//            if (shakes >= 2) {
+//                shakes = 0;
+//                [appPtr showGlobewithAircraft:[sky getRndPlane]];
+//#if EAGLVIEW_ENABLE_PRINTS
+//				NSLog(@"Shakes activated...");
+//#endif
+//            }
+//        }
+//        lastTime = CFAbsoluteTimeGetCurrent();
+//    }
+//}
 
 
-- (void)updateAccelerometerInterval:(BOOL)inInUse {
-    if ((inInUse) && (accelerometerEnabled)) {
-        [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
-    }
-    else if ((!inInUse) && (accelerometerEnabled)) {
-        [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequencySlow)];
-    }
-}
+//- (void)startAccelerometer {
+//    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
+//    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+//    accelerometerEnabled = YES;
+//}
+
+
+//- (void)updateAccelerometerInterval:(BOOL)inInUse {
+//    if ((inInUse) && (accelerometerEnabled)) {
+//        [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequency)];
+//    }
+//    else if ((!inInUse) && (accelerometerEnabled)) {
+//        [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / kAccelerometerFrequencySlow)];
+//    }
+//}
 
 
 - (void)updatePerferredAirportList {
-    myAirport1 = (NSString *) [[NSUserDefaults standardUserDefaults] objectForKey:@"preferredAirport1"];
-    if (myAirport1 == nil) {
-        myAirport1 = @" ";
-    }
-    myAirport2 = (NSString *) [[NSUserDefaults standardUserDefaults] objectForKey:@"preferredAirport2"];
-    if (myAirport2 == nil) {
-        myAirport2 = @" ";
-    }
-    myAirport3 = (NSString *) [[NSUserDefaults standardUserDefaults] objectForKey:@"preferredAirport3"];
-    if (myAirport3 == nil) {
-        myAirport3 = @" ";
-    }
-
+//    myAirport1 = (NSString *) [[NSUserDefaults standardUserDefaults] objectForKey:@"preferredAirport1"];
+//    if (myAirport1 == nil) {
+//        myAirport1 = @" ";
+//    }
+//    myAirport2 = (NSString *) [[NSUserDefaults standardUserDefaults] objectForKey:@"preferredAirport2"];
+//    if (myAirport2 == nil) {
+//        myAirport2 = @" ";
+//    }
+//    myAirport3 = (NSString *) [[NSUserDefaults standardUserDefaults] objectForKey:@"preferredAirport3"];
+//    if (myAirport3 == nil) {
+//        myAirport3 = @" ";
+//    }
+//
 }
 
 
@@ -159,7 +159,7 @@ BOOL accelerometerEnabled = NO;
 
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(airportDataManagerUpdated) name:@"AirportDataUpdated" object:nil];
 
-    [[AirportDataManager sharedInstance] setDelegate:self];
+    //[[AirportDataManager sharedInstance] setDelegate:self];
 
     if ((self = [super initWithFrame:(CGRect) frame])) {
 
@@ -172,7 +172,7 @@ BOOL accelerometerEnabled = NO;
         context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
 
         if (!context || ![EAGLContext setCurrentContext:context]) {
-            [self release];
+            //[self release];
             return nil;
         }
 
@@ -229,35 +229,35 @@ BOOL accelerometerEnabled = NO;
 
 #pragma mark Airport Plotting
 
-    NSArray *airportsArray = [[[AirportDataManager sharedInstance] allAirports] retain];
-
-	
-	
-    airports = (airport_t *) malloc(sizeof(airport_t) * airportsArray.count);
-
-    NSLog(@"%s ", __PRETTY_FUNCTION__);
-    NSLog(@"Current thread = %@", [NSThread currentThread]);
-    NSLog(@"airportCount = %u", airportsArray.count);
-
-    primaryAirportIndexes = [[NSMutableArray array] retain];
-
-	static int counter = 0;
-	
-    for (int i = 0; i < airportsArray.count; i++) {
-
-        //NSLog(@"Load airport %d", i);
-
-        Airport *airport = [[airportsArray objectAtIndex:i] retain];
-        [self initAirport:&airports[i] withName:airport.code withN:[airport.latitude floatValue] withE:[airport.longitude floatValue] withR:airport_colors[(i * 3)] withG:airport_colors[(i * 3) + 1] withB:airport_colors[(i * 3) + 2] isPrimary:[airport.primary boolValue]];
-        if ([airport.primary boolValue] == YES) {
-			counter++;
-            [primaryAirportIndexes addObject:[NSNumber numberWithInt:i]];
-        }
-
-        [airport release];
-    }
-
-	NSLog(@"Primary Airport Count %i", counter);
+//    NSArray *airportsArray;// = [[[AirportDataManager sharedInstance] allAirports] retain];
+//
+//	
+//	
+//    airports = (airport_t *) malloc(sizeof(airport_t) * airportsArray.count);
+//
+////    NSLog(@"%s ", __PRETTY_FUNCTION__);
+////    NSLog(@"Current thread = %@", [NSThread currentThread]);
+////    NSLog(@"airportCount = %u", airportsArray.count);
+//
+//    primaryAirportIndexes = [[NSMutableArray array] retain];
+//
+//	static int counter = 0;
+//	
+//    for (int i = 0; i < airportsArray.count; i++) {
+//
+//        //NSLog(@"Load airport %d", i);
+//
+//        Airport *airport = [[airportsArray objectAtIndex:i] retain];
+//        [self initAirport:&airports[i] withName:airport.code withN:[airport.latitude floatValue] withE:[airport.longitude floatValue] withR:airport_colors[(i * 3)] withG:airport_colors[(i * 3) + 1] withB:airport_colors[(i * 3) + 2] isPrimary:[airport.primary boolValue]];
+//        if ([airport.primary boolValue] == YES) {
+//			counter++;
+//            [primaryAirportIndexes addObject:[NSNumber numberWithInt:i]];
+//        }
+//
+//        [airport release];
+//    }
+//
+//	NSLog(@"Primary Airport Count %i", counter);
 
     /*
      THIS IS THE OLD PLOTTING CODE USING THEIR C ARRAYS, DON'T DELETE IN CASE OF COCK UP
@@ -266,10 +266,10 @@ BOOL accelerometerEnabled = NO;
      }
      */
 
-    flightpaths = (flightpath_t *) malloc(sizeof(flightpath_t) * NUM_AIRPORTS);
-    for (int i = 0; i < NUM_AIRPORTS; i++) {
-        flightpaths[i].used = NO;
-    }
+//    flightpaths = (flightpath_t *) malloc(sizeof(flightpath_t) * NUM_AIRPORTS);
+//    for (int i = 0; i < NUM_AIRPORTS; i++) {
+//        flightpaths[i].used = NO;
+//    }
 
     planes = (plane_t *) malloc(sizeof(plane_t) * MAX_PLANES);
     for (int i = 0; i < MAX_PLANES; i++) {
@@ -316,7 +316,7 @@ BOOL accelerometerEnabled = NO;
     glEnable(GL_LIGHTING);
     drawFrame = true;
 
-    [airportsArray release];
+    //[airportsArray release];
 }
 
 - (void)airportDataManagerUpdated {
@@ -327,7 +327,7 @@ BOOL accelerometerEnabled = NO;
 - (void)drawView {
     if (updateDraw) {
 
-        VAAAppDelegate *delegate = (VAAAppDelegate *) [[UIApplication sharedApplication] delegate];
+        AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
 
         ticks++;
 
@@ -339,9 +339,9 @@ BOOL accelerometerEnabled = NO;
         //[appPtr updatePlanes];
 
 
-        if ([appPtr isNewPlaneDataAvailable]) {
-            sky = [appPtr getPlaneData];
-        }
+//        if ([appPtr isNewPlaneDataAvailable]) {
+//            sky = [appPtr getPlaneData];
+//        }
 
         [self resetRenderList:&rl_back];
         [self resetRenderList:&rl_front];
@@ -350,7 +350,7 @@ BOOL accelerometerEnabled = NO;
         switch (appMode) {
             case APP_MODE_FREE: {
 
-                perLoaded.text = delegate.loadingText;
+                perLoaded.text = @"Loading please wait...";
                 for (int i = 0; i < 4; i++) {
 
                     if (_touches[i].active && !_touches[i].used) {
@@ -384,8 +384,8 @@ BOOL accelerometerEnabled = NO;
                                     _touches[i].taps = 0;
                                     selectedPlane = nearest_plane;
 
-                                    Aircraft *aircraft = planes[selectedPlane].ac;
-                                    [self.globeInterface tappedOnAircraft:aircraft withApp:appPtr];
+                                    //Aircraft *aircraft = planes[selectedPlane].ac;
+                                    //[self.globeInterface tappedOnAircraft:aircraft withApp:appPtr];
                                 }
                                 break;
 
@@ -393,8 +393,8 @@ BOOL accelerometerEnabled = NO;
                                 if (_touches[i].taps == 1 && !_touches[i].used) {
                                     _touches[i].taps = 0;
                                     _touches[i].used = YES;
-                                    NSString *Airport = airports[nearest_airport].name;
-                                    [self.globeInterface tappedOnAirportWith:(NSString *) Airport];
+                                    //NSString *Airport = airports[nearest_airport].name;
+                                    //[self.globeInterface tappedOnAirportWith:(NSString *) Airport];
                                 }
                                 break;
                         }
@@ -404,7 +404,7 @@ BOOL accelerometerEnabled = NO;
                 break;
 
             case APP_MODE_PLANE:
-                perLoaded.text = delegate.loadingText;
+                perLoaded.text = @"Loading please wait...";
                 for (int i = 0; i < 4; i++) {
                     if (_touches[i].active && !_touches[i].used) {
                         globeMode = GLOBE_MODE_FREE;
@@ -671,9 +671,9 @@ BOOL accelerometerEnabled = NO;
 
 
                 //this should draw all of them...
-                for (int i = 0; i < [[AirportDataManager sharedInstance] airportCount]; i++) {
-                    [self drawAirport:&airports[i]];
-                }
+//                for (int i = 0; i < [[AirportDataManager sharedInstance] airportCount]; i++) {
+//                    [self drawAirport:&airports[i]];
+//                }
 
                 /* OLD C DRAWING CODE - DON'T REMOVE
                 for(int i=0;i<NUM_PRIMARY_AIRPORTS;i++){
@@ -926,7 +926,7 @@ BOOL accelerometerEnabled = NO;
             [self initAirportGame];
             break;
         case 1:
-            [appPtr showBalloonIntro];
+            //[appPtr showBalloonIntro];
             [self initBalloonGame];
             break;
     }
@@ -1137,38 +1137,38 @@ BOOL accelerometerEnabled = NO;
 }
 
 - (void)setupObjectsForBalloonGame {
-    if (gameAirport != -1) {
-        gameStart = gameAirport;
-    }
-    else {
-        gameStart = (rand() & 65535) % NUM_PRIMARY_AIRPORTS;
-    }
-
-    do {
-        int randomPrimaryAirport = arc4random() % primaryAirportIndexes.count;
-        int randomPrimaryAirportIndex = [[primaryAirportIndexes objectAtIndex:randomPrimaryAirport] intValue];
-        gameAirport = randomPrimaryAirportIndex;
-
-        //gameAirport=airport_primary_list[abs(rand())%NUM_PRIMARY_AIRPORTS];
-        gameDistance = sqrt(((airports[gameStart].east - airports[gameAirport].east) * (airports[gameStart].east - airports[gameAirport].east)) + ((airports[gameStart].north - airports[gameAirport].north) * (airports[gameStart].north - airports[gameAirport].north)));
-    } while (gameDistance < 90.0f);
-
-    gameTimer = 60000;
-
-
-    objRichard.east = airports[gameStart].east;
-    objRichard.north = airports[gameStart].north;
-    objRichard.deast = 0;
-    objRichard.dnorth = 0;
-    objRichard.altitude = 0;
-
-    for (int i = 0; i < gameObjectCount; i++) {
-        objWhirlwind[i].east = (float) ((int) abs(rand()) % 360);
-        objWhirlwind[i].north = (float) (((int) abs(rand()) % 120) - 60);
-        objWhirlwind[i].deast = (float) (((int) abs(rand()) % 100) * (gameMaxObjectSpeed * 2)) - gameMaxObjectSpeed;
-        objWhirlwind[i].dnorth = (float) (((int) abs(rand()) % 100) * (gameMaxObjectSpeed * 2)) - gameMaxObjectSpeed;
-        objWhirlwind[i].altitude = 0;
-    }
+//    if (gameAirport != -1) {
+//        gameStart = gameAirport;
+//    }
+//    else {
+//        gameStart = (rand() & 65535) % NUM_PRIMARY_AIRPORTS;
+//    }
+//
+//    do {
+//        int randomPrimaryAirport = arc4random() % primaryAirportIndexes.count;
+//        int randomPrimaryAirportIndex = [[primaryAirportIndexes objectAtIndex:randomPrimaryAirport] intValue];
+//        gameAirport = randomPrimaryAirportIndex;
+//
+//        //gameAirport=airport_primary_list[abs(rand())%NUM_PRIMARY_AIRPORTS];
+//        gameDistance = sqrt(((airports[gameStart].east - airports[gameAirport].east) * (airports[gameStart].east - airports[gameAirport].east)) + ((airports[gameStart].north - airports[gameAirport].north) * (airports[gameStart].north - airports[gameAirport].north)));
+//    } while (gameDistance < 90.0f);
+//
+//    gameTimer = 60000;
+//
+//
+//    objRichard.east = airports[gameStart].east;
+//    objRichard.north = airports[gameStart].north;
+//    objRichard.deast = 0;
+//    objRichard.dnorth = 0;
+//    objRichard.altitude = 0;
+//
+//    for (int i = 0; i < gameObjectCount; i++) {
+//        objWhirlwind[i].east = (float) ((int) abs(rand()) % 360);
+//        objWhirlwind[i].north = (float) (((int) abs(rand()) % 120) - 60);
+//        objWhirlwind[i].deast = (float) (((int) abs(rand()) % 100) * (gameMaxObjectSpeed * 2)) - gameMaxObjectSpeed;
+//        objWhirlwind[i].dnorth = (float) (((int) abs(rand()) % 100) * (gameMaxObjectSpeed * 2)) - gameMaxObjectSpeed;
+//        objWhirlwind[i].altitude = 0;
+//    }
 
 }
 
@@ -1418,54 +1418,54 @@ BOOL accelerometerEnabled = NO;
 
 - (void)drawBalloonGame {
 
-    switch (gameState) {
-        case GS_BALLOON_GAMEPLAY:
-
-            [self drawAirport:&airports[gameAirport]];
-
-            for (int i = 0; i < gameObjectCount; i++) {
-                if ((((ticks >> 2) + i) % gameObjectCount) == 0) {
-                    [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_cloud2] atN:objWhirlwind[i].north atE:objWhirlwind[i].east resultSprite:&objWhirlwind[i].sprite];
-                }
-                else {
-                    [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_cloud1] atN:objWhirlwind[i].north atE:objWhirlwind[i].east resultSprite:&objWhirlwind[i].sprite];
-                }
-
-            }
-
-
-            [self drawSpriteOnGlobeRotated:&ts_main[GRAPHICS_maingfx_arrow] atN:objCompass[2].north atE:objCompass[2].east withAngle:gameCompassAngle withScale:point_sprite_scale * 2.0f resultSprite:&objCompass[2].sprite];
-
-            drawingBalloon = true;
-            [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_balloon4] atN:objRichard.north atE:objRichard.east resultSprite:&objRichard.sprite];
-            drawingBalloon = false;
-
-            [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
-            [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
-            [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
-
-            break;
-
-        case GS_BALLOON_INTRO:
-            //[self drawTagSprite:&ts_main[GRAPHICS_maingfx_balloontrip] X:0 Y:0 Z:0 RL:&rl_front];
-            break;
-        case GS_BALLOON_WIN:
-            //[self drawTagSprite:&ts_main[GRAPHICS_maingfx_welldone] X:0 Y:0 Z:0 RL:&rl_front];
-            //[self drawNumber:gameScore X:256 Y:32 RL:&rl_gui];
-            break;
-        case GS_BALLOON_LOSE:
-            //[self drawTagSprite:&ts_main[GRAPHICS_maingfx_badweather] X:0 Y:0 Z:0 RL:&rl_front];
-            //[self drawNumber:gameScore X:184 Y:176 RL:&rl_gui];
-            //[self drawNumber:gameHighScoreBalloon X:184 Y:200 RL:&rl_gui];
-            break;
-
-        case GS_BALLOON_OUT_OF_TIME:
-            //[self drawTagSprite:&ts_main[GRAPHICS_maingfx_outoftime] X:0 Y:0 Z:0 RL:&rl_front];
-            //[self drawNumber:gameScore X:184 Y:176 RL:&rl_gui];
-            //[self drawNumber:gameHighScoreBalloon X:184 Y:200 RL:&rl_gui];
-            break;
-
-    }
+//    switch (gameState) {
+//        case GS_BALLOON_GAMEPLAY:
+//
+//            [self drawAirport:&airports[gameAirport]];
+//
+//            for (int i = 0; i < gameObjectCount; i++) {
+//                if ((((ticks >> 2) + i) % gameObjectCount) == 0) {
+//                    [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_cloud2] atN:objWhirlwind[i].north atE:objWhirlwind[i].east resultSprite:&objWhirlwind[i].sprite];
+//                }
+//                else {
+//                    [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_cloud1] atN:objWhirlwind[i].north atE:objWhirlwind[i].east resultSprite:&objWhirlwind[i].sprite];
+//                }
+//
+//            }
+//
+//
+//            [self drawSpriteOnGlobeRotated:&ts_main[GRAPHICS_maingfx_arrow] atN:objCompass[2].north atE:objCompass[2].east withAngle:gameCompassAngle withScale:point_sprite_scale * 2.0f resultSprite:&objCompass[2].sprite];
+//
+//            drawingBalloon = true;
+//            [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_balloon4] atN:objRichard.north atE:objRichard.east resultSprite:&objRichard.sprite];
+//            drawingBalloon = false;
+//
+//            [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
+//            [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
+//            [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
+//
+//            break;
+//
+//        case GS_BALLOON_INTRO:
+//            //[self drawTagSprite:&ts_main[GRAPHICS_maingfx_balloontrip] X:0 Y:0 Z:0 RL:&rl_front];
+//            break;
+//        case GS_BALLOON_WIN:
+//            //[self drawTagSprite:&ts_main[GRAPHICS_maingfx_welldone] X:0 Y:0 Z:0 RL:&rl_front];
+//            //[self drawNumber:gameScore X:256 Y:32 RL:&rl_gui];
+//            break;
+//        case GS_BALLOON_LOSE:
+//            //[self drawTagSprite:&ts_main[GRAPHICS_maingfx_badweather] X:0 Y:0 Z:0 RL:&rl_front];
+//            //[self drawNumber:gameScore X:184 Y:176 RL:&rl_gui];
+//            //[self drawNumber:gameHighScoreBalloon X:184 Y:200 RL:&rl_gui];
+//            break;
+//
+//        case GS_BALLOON_OUT_OF_TIME:
+//            //[self drawTagSprite:&ts_main[GRAPHICS_maingfx_outoftime] X:0 Y:0 Z:0 RL:&rl_front];
+//            //[self drawNumber:gameScore X:184 Y:176 RL:&rl_gui];
+//            //[self drawNumber:gameHighScoreBalloon X:184 Y:200 RL:&rl_gui];
+//            break;
+//
+//    }
 
 
 }
@@ -1502,7 +1502,7 @@ BOOL accelerometerEnabled = NO;
         // If distance is postive we have tapped to the right of the airport and might be on the name
         // Only makes sense when zoomed in
         if ((zoomLevel < 40) && (x_distance > 0)) {
-            NSString *name = [appPtr shortAirportNameToCapitalLong:airports[i].name];
+            NSString *name;// = [appPtr shortAirportNameToCapitalLong:airports[i].name];
             int padding = [name length] * 10; // Assume 10px per letter
 
             // JFK and LHR are special cases since their text is shifted up 15px on the map (AND ADAM ADDED ABZ AND GLA)
@@ -1828,7 +1828,7 @@ BOOL accelerometerEnabled = NO;
         unit_size = -unit_size;
     }
 
-    VAAAppDelegate *delegate = (VAAAppDelegate *) [[UIApplication sharedApplication] delegate];
+    AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
 
     if (res[3] < (globe_radius * 0.5)) {
 
@@ -1849,7 +1849,7 @@ BOOL accelerometerEnabled = NO;
             [self drawTagSpritePointRotated:&ts_main[GRAPHICS_maingfx_globe_pin] X:res[0] Y:res[1] Z:0 SCALE:point_sprite_scale UNIT:unit_size ANGLE:0.0f RL:&rl_front];
         }
         if (appMode == APP_MODE_PLANE || appMode == APP_MODE_GAME_BALLOON) {
-            NSString *name = [delegate shortAirportNameToCapitalLong:airportName];
+            NSString *name;// = [delegate shortAirportNameToCapitalLong:airportName];
             [self drawString:[name cStringUsingEncoding:NSUTF8StringEncoding] X:res[0] Y:res[1] RL:&rl_gui];
         }
         else {
@@ -1868,7 +1868,7 @@ BOOL accelerometerEnabled = NO;
                         [self drawString:[airportName cStringUsingEncoding:NSUTF8StringEncoding] X:res[0] + 10 Y:res[1] RL:&rl_gui];
                     }
                     if (zoomLevel < 40) {
-                        NSString *name = [delegate shortAirportNameToCapitalLong:airportName];
+                        NSString *name;// = [delegate shortAirportNameToCapitalLong:airportName];
                         if ([airportName isEqualToString:@"LHR"] || [airportName isEqualToString:@"JFK"]) {
                             res[1] -= 15;
                         }
@@ -1942,7 +1942,7 @@ BOOL accelerometerEnabled = NO;
         ap->screen_x = res[0];
         ap->screen_y = res[1];
         if (zoomLevel < 40) {
-            [self drawString:[[ap->ac getFlightNo] cStringUsingEncoding:NSUTF8StringEncoding] X:res[0] Y:res[1] + 10 RL:&rl_gui];
+            //[self drawString:[[ap->ac getFlightNo] cStringUsingEncoding:NSUTF8StringEncoding] X:res[0] Y:res[1] + 10 RL:&rl_gui];
         }
         [self drawTagSpritePointRotated:&ts_main[GRAPHICS_maingfx_plane2] X:res[0] Y:res[1] Z:0 SCALE:point_sprite_scale * 2.0f UNIT:unit_size ANGLE:angle RL:&rl_front];
     }
@@ -3693,14 +3693,14 @@ BOOL accelerometerEnabled = NO;
 
 - (void)startAnimation {
     self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:animationInterval target:self selector:@selector(drawView) userInfo:nil repeats:YES];
-    [self updateAccelerometerInterval:YES];
+    //[self updateAccelerometerInterval:YES];
     [self updatePerferredAirportList];
 }
 
 
 - (void)stopAnimation {
     self.animationTimer = nil;
-    [self updateAccelerometerInterval:NO];
+    //[self updateAccelerometerInterval:NO];
 }
 
 
@@ -3732,14 +3732,14 @@ BOOL accelerometerEnabled = NO;
     [self freeRenderList:&rl_front];
     [self freeRenderList:&rl_gui];
 
-    [context release];
-    [airportLabels release];
+    //[context release];
+    //[airportLabels release];
 
     if (airports) free(airports);
     if (flightpaths) free(flightpaths);
     if (planes) free(planes);
 
-    [super dealloc];
+    //[super dealloc];
 }
 
 
@@ -3937,41 +3937,41 @@ BOOL accelerometerEnabled = NO;
 #endif
 }
 
-- (void)newPlaneData:(Aircraft *)ac {
-#if EAGLVIEW_ENABLE_PRINTS
-	NSLog("new aircraft data: %p   name: %p  movement:%p\n",ac,ac->name,ac->position);
-	NSLog(ac->name);
-	NSLog([ac->position objectForKey:@"latitude"]);
-	NSLog([ac->position objectForKey:@"longtitude"]);
-#endif
-
-    int pi = [self findPlaneWithName:ac->name];
-    if (pi == -1) {
-        pi = [self addPlane:ac];
-    }
-    else {
-        [self updatePlane:pi withData:ac];
-    }
-
-    if (ac->flying == NO) {
-        planes[pi].used = NO;
-    }
-    else {
-        //Edit here to test unknown airport
-        int api1 = [self findAirportWithName:[ac->activeFlight beginning]];
-        int api2 = [self findAirportWithName:[ac->activeFlight destination]];
-        if (api1 != -1 && api2 != -1) {
-            [self initFlightpath:&flightpaths[pi] withStart:&airports[api1] withEnd:&airports[api2] withDirection:0];
-            [self buildFlightpathDots:&flightpaths[pi] withPlane:&planes[pi]];
-            planes[pi].flight = &flightpaths[pi];
-        }
-        else {
-            flightpaths[pi].used = NO;
-        }
-
-
-    }
-}
+//- (void)newPlaneData:(Aircraft *)ac {
+//#if EAGLVIEW_ENABLE_PRINTS
+//	NSLog("new aircraft data: %p   name: %p  movement:%p\n",ac,ac->name,ac->position);
+//	NSLog(ac->name);
+//	NSLog([ac->position objectForKey:@"latitude"]);
+//	NSLog([ac->position objectForKey:@"longtitude"]);
+//#endif
+//
+//    int pi = [self findPlaneWithName:ac->name];
+//    if (pi == -1) {
+//        pi = [self addPlane:ac];
+//    }
+//    else {
+//        [self updatePlane:pi withData:ac];
+//    }
+//
+//    if (ac->flying == NO) {
+//        planes[pi].used = NO;
+//    }
+//    else {
+//        //Edit here to test unknown airport
+//        int api1 = [self findAirportWithName:[ac->activeFlight beginning]];
+//        int api2 = [self findAirportWithName:[ac->activeFlight destination]];
+//        if (api1 != -1 && api2 != -1) {
+//            [self initFlightpath:&flightpaths[pi] withStart:&airports[api1] withEnd:&airports[api2] withDirection:0];
+//            [self buildFlightpathDots:&flightpaths[pi] withPlane:&planes[pi]];
+//            planes[pi].flight = &flightpaths[pi];
+//        }
+//        else {
+//            flightpaths[pi].used = NO;
+//        }
+//
+//
+//    }
+//}
 
 - (int)findPlaneWithName:(NSString *)str {
     for (int i = 0; i < MAX_PLANES; i++) {
@@ -3982,47 +3982,47 @@ BOOL accelerometerEnabled = NO;
     return -1;
 }
 
-- (int)addPlane:(Aircraft *)ac {
-    int pi = -1;
-    BOOL space_found = NO;
-    for (int i = 0; i < MAX_PLANES; i++) {
-        if (!planes[i].used) {
-            space_found = YES;
-            pi = i;
-            break;
-        }
-    }
+//- (int)addPlane:(Aircraft *)ac {
+//    int pi = -1;
+//    BOOL space_found = NO;
+//    for (int i = 0; i < MAX_PLANES; i++) {
+//        if (!planes[i].used) {
+//            space_found = YES;
+//            pi = i;
+//            break;
+//        }
+//    }
+//
+//    if (space_found) {
+//        [self initPlane:&planes[pi] withName:ac->name withFlight:&flightpaths[pi] withN:[[ac->position objectForKey:@"latitude"] floatValue] withE:[[ac->position objectForKey:@"longtitude"] floatValue] withR:255 withG:255 withB:255];
+//        planes[pi].ac = ac;
+//    }
+//
+//    return pi;
+//}
 
-    if (space_found) {
-        [self initPlane:&planes[pi] withName:ac->name withFlight:&flightpaths[pi] withN:[[ac->position objectForKey:@"latitude"] floatValue] withE:[[ac->position objectForKey:@"longtitude"] floatValue] withR:255 withG:255 withB:255];
-        planes[pi].ac = ac;
-    }
-
-    return pi;
-}
-
-- (void)updatePlane:(int)pi withData:(Aircraft *)ac {
-    planes[pi].east = [[ac->position objectForKey:@"longtitude"] floatValue];
-    planes[pi].north = [[ac->position objectForKey:@"latitude"] floatValue];
-
-    if (planes[pi].east >= 360.0f || planes[pi].east <= -360.0f) {
-#if EAGLVIEW_ENABLE_PRINTS
-		printf("Error in plane east - %f\n",planes[pi].east);
-#endif
-        planes[pi].used = NO;
-    }
-
-    if (planes[pi].north >= 180.0f || planes[pi].north <= -180.0f) {
-#if EAGLVIEW_ENABLE_PRINTS
-		printf("Error in plane north - %f\n",planes[pi].north);
-#endif
-        planes[pi].used = NO;
-    }
-
-    planes[pi].ac = ac;
-
-
-}
+//- (void)updatePlane:(int)pi withData:(Aircraft *)ac {
+//    planes[pi].east = [[ac->position objectForKey:@"longtitude"] floatValue];
+//    planes[pi].north = [[ac->position objectForKey:@"latitude"] floatValue];
+//
+//    if (planes[pi].east >= 360.0f || planes[pi].east <= -360.0f) {
+//#if EAGLVIEW_ENABLE_PRINTS
+//		printf("Error in plane east - %f\n",planes[pi].east);
+//#endif
+//        planes[pi].used = NO;
+//    }
+//
+//    if (planes[pi].north >= 180.0f || planes[pi].north <= -180.0f) {
+//#if EAGLVIEW_ENABLE_PRINTS
+//		printf("Error in plane north - %f\n",planes[pi].north);
+//#endif
+//        planes[pi].used = NO;
+//    }
+//
+//    planes[pi].ac = ac;
+//
+//
+//}
 
 
 - (int)findAirportWithName:(NSString *)name {
@@ -4035,7 +4035,7 @@ BOOL accelerometerEnabled = NO;
     return -1;
 }
 
-- (void)setAppPtr:(VAAAppDelegate *)newParent {
+- (void)setAppPtr:(AppDelegate *)newParent {
     appPtr = newParent;
 }
 
@@ -4122,8 +4122,8 @@ BOOL accelerometerEnabled = NO;
     CGContextRelease(currentContext);
 
     free(imageData);
-    [image release];
-    [texData release];
+    //[image release];
+    //[texData release];
 
     return true;
 }
@@ -4223,11 +4223,11 @@ BOOL accelerometerEnabled = NO;
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
-- (GlobeViewController *)globeInterface {
-    if ([interface isKindOfClass:[GlobeViewController class]])
-        return (GlobeViewController *) interface;
-    return nil;
-}
+//- (GlobeViewController *)globeInterface {
+//    if ([interface isKindOfClass:[GlobeViewController class]])
+//        return (GlobeViewController *) interface;
+//    return nil;
+//}
 
 - (GameViewController *)gameInterface {
     if ([interface isKindOfClass:[GameViewController class]])

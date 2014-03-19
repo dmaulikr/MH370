@@ -7,14 +7,73 @@
 //
 
 #import "AppDelegate.h"
+#import "GameViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    //GameViewController  *objGlobeViewController=[[GameViewController alloc] init];
+    //self.window.rootViewController = objGlobeViewController;
+    [self showWheresRichardIntro];
+    
     return YES;
 }
+
+- (void) showWheresRichardIntro
+{
+	gameTextController = [[GameTextController alloc] initWithNibName:@"GameTextFind" bundle:[NSBundle mainBundle]];
+	[gameTextController setAppPtr:self];
+	[_window addSubview:[gameTextController view]];
+}
+
+- (BOOL) nextGameState
+{
+	int currentGameState = [glView getGameState];
+	int newGameState = currentGameState;
+	BOOL endGame = NO;
+	BOOL removeView = NO;
+	
+	switch(currentGameState)
+	{
+		case GS_AIRPORT_INTRO:
+			newGameState = GS_AIRPORT_FIND;
+			removeView = YES;
+			break;
+		case GS_AIRPORT_RESULT:
+			endGame = YES;
+			removeView = YES;
+			break;
+		case GS_BALLOON_INTRO:
+			newGameState = GS_BALLOON_GAMEPLAY;
+			removeView = YES;
+			break;
+		case GS_BALLOON_WIN:
+			newGameState = GS_BALLOON_CONTINUE;
+			removeView = YES;
+			break;
+		case GS_BALLOON_LOSE:
+		case GS_BALLOON_OUT_OF_TIME:
+			newGameState = GS_BALLOON_END;
+			removeView = YES;
+			break;
+	}
+	
+	if(!endGame)
+	{
+		[glView setGameState:newGameState];
+	}
+	else
+	{
+		[glView endCurrentGame];
+	}
+	
+	return removeView;
+}
+
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
