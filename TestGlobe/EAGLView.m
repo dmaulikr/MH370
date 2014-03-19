@@ -11,7 +11,7 @@
 #import "EAGLView.h"
 #import "gameViewController.h"
 //#import "GlobeViewController.h"
-
+#import "AirportDataManager.h"
 #define EAGLVIEW_ENABLE_PRINTS        0
 
 #define USE_DEPTH_BUFFER            1
@@ -229,34 +229,34 @@ BOOL accelerometerEnabled = NO;
 
 #pragma mark Airport Plotting
 
-//    NSArray *airportsArray;// = [[[AirportDataManager sharedInstance] allAirports] retain];
+    NSArray *airportsArray = [[[AirportDataManager sharedInstance] allAirports] retain];
 //
 //	
 //	
-//    airports = (airport_t *) malloc(sizeof(airport_t) * airportsArray.count);
+    airports = (airport_t *) malloc(sizeof(airport_t) * airportsArray.count);
 //
 ////    NSLog(@"%s ", __PRETTY_FUNCTION__);
 ////    NSLog(@"Current thread = %@", [NSThread currentThread]);
 ////    NSLog(@"airportCount = %u", airportsArray.count);
 //
-//    primaryAirportIndexes = [[NSMutableArray array] retain];
+    primaryAirportIndexes = [[NSMutableArray array] retain];
 //
-//	static int counter = 0;
+	static int counter = 0;
 //	
-//    for (int i = 0; i < airportsArray.count; i++) {
-//
-//        //NSLog(@"Load airport %d", i);
-//
-//        Airport *airport = [[airportsArray objectAtIndex:i] retain];
-//        [self initAirport:&airports[i] withName:airport.code withN:[airport.latitude floatValue] withE:[airport.longitude floatValue] withR:airport_colors[(i * 3)] withG:airport_colors[(i * 3) + 1] withB:airport_colors[(i * 3) + 2] isPrimary:[airport.primary boolValue]];
-//        if ([airport.primary boolValue] == YES) {
-//			counter++;
-//            [primaryAirportIndexes addObject:[NSNumber numberWithInt:i]];
-//        }
-//
-//        [airport release];
-//    }
-//
+    for (int i = 0; i < airportsArray.count; i++) {
+
+        //NSLog(@"Load airport %d", i);
+
+        Airport *airport = [[airportsArray objectAtIndex:i] retain];
+        [self initAirport:&airports[i] withName:airport.code withN:[airport.latitude floatValue] withE:[airport.longitude floatValue] withR:airport_colors[(i * 3)] withG:airport_colors[(i * 3) + 1] withB:airport_colors[(i * 3) + 2] isPrimary:[airport.primary boolValue]];
+        if ([airport.primary boolValue] == YES) {
+			counter++;
+            [primaryAirportIndexes addObject:[NSNumber numberWithInt:i]];
+        }
+
+        [airport release];
+    }
+
 //	NSLog(@"Primary Airport Count %i", counter);
 
     /*
@@ -1073,11 +1073,19 @@ BOOL accelerometerEnabled = NO;
         case GS_AIRPORT_FIND:
             //[self drawAirport:&airports[gameAirport]];
 
+
             //[self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
 
             [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
             [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
             //[self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
+
+           // [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
+
+            [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
+            [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
+           // [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
+
 
             if (rotateTouch != -1) {
 
@@ -1092,18 +1100,31 @@ BOOL accelerometerEnabled = NO;
 
             }
 
+
 //            [self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_thermometer1 + gameTemperature] X:/*_touches[rotateTouch].tx + 48*/295 Y:/*_touches[rotateTouch].ty - 48*/295 Z:0 SCALE:0.35f RL:&rl_front];
+
+          //  [self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_thermometer1 + gameTemperature] X:/*_touches[rotateTouch].tx + 48*/295 Y:/*_touches[rotateTouch].ty - 48*/295 Z:0 SCALE:0.35f RL:&rl_front];
+
 
 
             break;
         case GS_AIRPORT_FOUND:
             //[self drawAirport:&airports[gameAirport]];
+
             //[self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
             //[self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_brandstar1 + (bransonAnimation >> 2)] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
             //		[self drawNumber:(gameTimer/1000) X:32 Y:32 RL:&rl_gui];
             [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
             [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
             //[self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
+
+          //  [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
+           // [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_brandstar1 + (bransonAnimation >> 2)] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
+            //		[self drawNumber:(gameTimer/1000) X:32 Y:32 RL:&rl_gui];
+            [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
+            [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
+           // [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
+
             gameTemperature = 0;
             break;
         case GS_AIRPORT_RESULT:

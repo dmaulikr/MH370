@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "GlobeViewController.h"
 #import "EAGLView.h"
-
+#import "CoreDataStack.h"
 @implementation AppDelegate
 @synthesize navigationController=_navigationController;
 
@@ -52,6 +52,22 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+#pragma mark -
+#pragma mark Core Data stack
+
+
+- (NSManagedObjectContext *) managedObjectContext {
+	return [CoreDataStack sharedInstance].managedObjectContext;
+}
+
+
+- (NSManagedObjectModel *)managedObjectModel {
+    return [CoreDataStack sharedInstance].managedObjectModel;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    return [CoreDataStack sharedInstance].persistentStoreCoordinator;
 }
 
 @end

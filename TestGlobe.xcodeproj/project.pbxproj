@@ -42,6 +42,11 @@
 		8B238BAF18D9F0A50018B167 /* maingfx.bin in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BA918D9F0A50018B167 /* maingfx.bin */; };
 		8B238BB018D9F0A50018B167 /* maingfx.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BAA18D9F0A50018B167 /* maingfx.png */; };
 		8B238BB218D9F26A0018B167 /* AirportData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BB118D9F26A0018B167 /* AirportData.plist */; };
+		8B238BB518DA09D50018B167 /* AirportDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238BB418DA09D50018B167 /* AirportDataManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B238BB818DA0A180018B167 /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238BB718DA0A180018B167 /* Airport.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B238BBB18DA0B4D0018B167 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238BBA18DA0B4D0018B167 /* CoreDataStack.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B238BBE18DA12320018B167 /* Tweets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B238BBC18DA12320018B167 /* Tweets.xcdatamodeld */; };
+		8B238BC018DA15BC0018B167 /* AirportDataPrimaryOnly.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BBF18DA15BB0018B167 /* AirportDataPrimaryOnly.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +109,14 @@
 		8B238BA918D9F0A50018B167 /* maingfx.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = maingfx.bin; path = Images/maingfx.bin; sourceTree = SOURCE_ROOT; };
 		8B238BAA18D9F0A50018B167 /* maingfx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maingfx.png; path = Images/maingfx.png; sourceTree = SOURCE_ROOT; };
 		8B238BB118D9F26A0018B167 /* AirportData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirportData.plist; sourceTree = "<group>"; };
+		8B238BB318DA09D50018B167 /* AirportDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirportDataManager.h; sourceTree = "<group>"; };
+		8B238BB418DA09D50018B167 /* AirportDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirportDataManager.m; sourceTree = "<group>"; };
+		8B238BB618DA0A180018B167 /* Airport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Airport.h; sourceTree = "<group>"; };
+		8B238BB718DA0A180018B167 /* Airport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Airport.m; sourceTree = "<group>"; };
+		8B238BB918DA0B4D0018B167 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
+		8B238BBA18DA0B4D0018B167 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
+		8B238BBD18DA12320018B167 /* Tweets.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tweets.xcdatamodel; sourceTree = "<group>"; };
+		8B238BBF18DA15BB0018B167 /* AirportDataPrimaryOnly.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirportDataPrimaryOnly.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +153,7 @@
 		8B238B3718D9C7840018B167 = {
 			isa = PBXGroup;
 			children = (
+				8B238BBF18DA15BB0018B167 /* AirportDataPrimaryOnly.plist */,
 				8B238BB118D9F26A0018B167 /* AirportData.plist */,
 				8B238B4918D9C7840018B167 /* TestGlobe */,
 				8B238B6218D9C7850018B167 /* TestGlobeTests */,
@@ -178,6 +192,13 @@
 		8B238B4918D9C7840018B167 /* TestGlobe */ = {
 			isa = PBXGroup;
 			children = (
+				8B238BBC18DA12320018B167 /* Tweets.xcdatamodeld */,
+				8B238BB918DA0B4D0018B167 /* CoreDataStack.h */,
+				8B238BBA18DA0B4D0018B167 /* CoreDataStack.m */,
+				8B238BB618DA0A180018B167 /* Airport.h */,
+				8B238BB718DA0A180018B167 /* Airport.m */,
+				8B238BB318DA09D50018B167 /* AirportDataManager.h */,
+				8B238BB418DA09D50018B167 /* AirportDataManager.m */,
 				8B238BA518D9F0A50018B167 /* font.png */,
 				8B238BA618D9F0A50018B167 /* globe_shine_light.png */,
 				8B238BA718D9F0A50018B167 /* globe_shine.png */,
@@ -324,6 +345,7 @@
 				8B238BAF18D9F0A50018B167 /* maingfx.bin in Resources */,
 				8B238BAD18D9F0A50018B167 /* globe_shine.png in Resources */,
 				8B238BAB18D9F0A50018B167 /* font.png in Resources */,
+				8B238BC018DA15BC0018B167 /* AirportDataPrimaryOnly.plist in Resources */,
 				8B238B5618D9C7840018B167 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +367,8 @@
 			files = (
 				8B238B9518D9E34A0018B167 /* EAGLView.h in Sources */,
 				8B238B9E18D9E8450018B167 /* GameViewController.m in Sources */,
+				8B238BBB18DA0B4D0018B167 /* CoreDataStack.m in Sources */,
+				8B238BBE18DA12320018B167 /* Tweets.xcdatamodeld in Sources */,
 				8B238B5418D9C7840018B167 /* AppDelegate.m in Sources */,
 				8B238BA418D9EC390018B167 /* UIView-AlertAnimations.m in Sources */,
 				8B238B7918D9CA390018B167 /* EAGLView.m in Sources */,
@@ -352,6 +376,8 @@
 				8B238BA118D9EC110018B167 /* CustomAlertView.m in Sources */,
 				8B238B5018D9C7840018B167 /* main.m in Sources */,
 				8B238B9818D9E3F30018B167 /* Aircraft.m in Sources */,
+				8B238BB818DA0A180018B167 /* Airport.m in Sources */,
+				8B238BB518DA09D50018B167 /* AirportDataManager.m in Sources */,
 				8B238B7418D9C7AA0018B167 /* GlobeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,6 +594,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8B238BBC18DA12320018B167 /* Tweets.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8B238BBD18DA12320018B167 /* Tweets.xcdatamodel */,
+			);
+			currentVersion = 8B238BBD18DA12320018B167 /* Tweets.xcdatamodel */;
+			path = Tweets.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8B238B3818D9C7840018B167 /* Project object */;
 }
