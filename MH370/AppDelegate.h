@@ -24,5 +24,5 @@
 
 - (void) showWheresRichardIntro;
 - (BOOL) nextGameState;
-
+- (void) showGlobe;
 @end

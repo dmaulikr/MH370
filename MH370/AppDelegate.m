@@ -17,10 +17,13 @@
     
     //GameViewController  *objGlobeViewController=[[GameViewController alloc] init];
     //self.window.rootViewController = objGlobeViewController;
-    [self showWheresRichardIntro];
+    //[self showWheresRichardIntro];
+    [glView.interface viewWillAppear:YES];
+    [glView initAlternateGame];
     
     return YES;
 }
+
 
 - (void) showWheresRichardIntro
 {
