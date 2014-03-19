@@ -7,14 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "GlobeViewController.h"
+#import "EAGLView.h"
 
 @implementation AppDelegate
+@synthesize navigationController=_navigationController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    GlobeViewController  *objGlobeViewController=[[GlobeViewController alloc] initWithNibName:@"GlobeViewController" bundle:[NSBundle mainBundle]];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:objGlobeViewController];
+    [self.navigationController setNavigationBarHidden:YES];
+    self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     return YES;
 }

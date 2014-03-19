@@ -11,14 +11,37 @@
 		8B238B4618D9C7840018B167 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B4518D9C7840018B167 /* CoreGraphics.framework */; };
 		8B238B4818D9C7840018B167 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B4718D9C7840018B167 /* UIKit.framework */; };
 		8B238B4E18D9C7840018B167 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B238B4C18D9C7840018B167 /* InfoPlist.strings */; };
-		8B238B5018D9C7840018B167 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B4F18D9C7840018B167 /* main.m */; };
-		8B238B5418D9C7840018B167 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B5318D9C7840018B167 /* AppDelegate.m */; };
+		8B238B5018D9C7840018B167 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B4F18D9C7840018B167 /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B238B5418D9C7840018B167 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B5318D9C7840018B167 /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8B238B5618D9C7840018B167 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B238B5518D9C7840018B167 /* Images.xcassets */; };
 		8B238B5D18D9C7850018B167 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B5C18D9C7850018B167 /* XCTest.framework */; };
 		8B238B5E18D9C7850018B167 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B4318D9C7840018B167 /* Foundation.framework */; };
 		8B238B5F18D9C7850018B167 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B4718D9C7840018B167 /* UIKit.framework */; };
 		8B238B6718D9C7850018B167 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B238B6518D9C7850018B167 /* InfoPlist.strings */; };
 		8B238B6918D9C7850018B167 /* TestGlobeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B6818D9C7850018B167 /* TestGlobeTests.m */; };
+		8B238B7418D9C7AA0018B167 /* GlobeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B7318D9C7AA0018B167 /* GlobeViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B238B7618D9C97B0018B167 /* GlobeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B238B7518D9C97B0018B167 /* GlobeViewController.xib */; };
+		8B238B7918D9CA390018B167 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B7818D9CA390018B167 /* EAGLView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B238B8518D9DEE90018B167 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B8418D9DEE90018B167 /* OpenGLES.framework */; };
+		8B238B8B18D9E1CE0018B167 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B8918D9E1CE0018B167 /* libxml2.2.dylib */; };
+		8B238B8C18D9E1CE0018B167 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B8A18D9E1CE0018B167 /* libxml2.dylib */; };
+		8B238B8E18D9E2E60018B167 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B8D18D9E2E60018B167 /* libsqlite3.0.dylib */; };
+		8B238B9018D9E2F90018B167 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B8F18D9E2F90018B167 /* SystemConfiguration.framework */; };
+		8B238B9218D9E3060018B167 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B9118D9E3060018B167 /* QuartzCore.framework */; };
+		8B238B9418D9E3300018B167 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B238B9318D9E3300018B167 /* CFNetwork.framework */; };
+		8B238B9518D9E34A0018B167 /* EAGLView.h in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B7718D9CA390018B167 /* EAGLView.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B238B9818D9E3F30018B167 /* Aircraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B9718D9E3F30018B167 /* Aircraft.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B238B9B18D9E4130018B167 /* Flight.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B9A18D9E4130018B167 /* Flight.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B238B9E18D9E8450018B167 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238B9D18D9E8450018B167 /* GameViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B238BA118D9EC110018B167 /* CustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238BA018D9EC110018B167 /* CustomAlertView.m */; };
+		8B238BA418D9EC390018B167 /* UIView-AlertAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238BA318D9EC390018B167 /* UIView-AlertAnimations.m */; };
+		8B238BAB18D9F0A50018B167 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BA518D9F0A50018B167 /* font.png */; };
+		8B238BAC18D9F0A50018B167 /* globe_shine_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BA618D9F0A50018B167 /* globe_shine_light.png */; };
+		8B238BAD18D9F0A50018B167 /* globe_shine.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BA718D9F0A50018B167 /* globe_shine.png */; };
+		8B238BAE18D9F0A50018B167 /* globe.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BA818D9F0A50018B167 /* globe.png */; };
+		8B238BAF18D9F0A50018B167 /* maingfx.bin in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BA918D9F0A50018B167 /* maingfx.bin */; };
+		8B238BB018D9F0A50018B167 /* maingfx.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BAA18D9F0A50018B167 /* maingfx.png */; };
+		8B238BB218D9F26A0018B167 /* AirportData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BB118D9F26A0018B167 /* AirportData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +71,39 @@
 		8B238B6418D9C7850018B167 /* TestGlobeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestGlobeTests-Info.plist"; sourceTree = "<group>"; };
 		8B238B6618D9C7850018B167 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8B238B6818D9C7850018B167 /* TestGlobeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestGlobeTests.m; sourceTree = "<group>"; };
+		8B238B7218D9C7AA0018B167 /* GlobeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobeViewController.h; path = ../GlobeViewController.h; sourceTree = "<group>"; };
+		8B238B7318D9C7AA0018B167 /* GlobeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobeViewController.m; path = ../GlobeViewController.m; sourceTree = "<group>"; };
+		8B238B7518D9C97B0018B167 /* GlobeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GlobeViewController.xib; sourceTree = "<group>"; };
+		8B238B7718D9CA390018B167 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
+		8B238B7818D9CA390018B167 /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
+		8B238B7A18D9CBB40018B167 /* GlobeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobeModel.h; sourceTree = "<group>"; };
+		8B238B7B18D9CC320018B167 /* AirportCoords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirportCoords.h; sourceTree = "<group>"; };
+		8B238B7C18D9CC550018B167 /* TagGraphicsfont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagGraphicsfont.h; sourceTree = "<group>"; };
+		8B238B7D18D9CC550018B167 /* TagGraphicsmaingfx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagGraphicsmaingfx.h; sourceTree = "<group>"; };
+		8B238B8418D9DEE90018B167 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		8B238B8918D9E1CE0018B167 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		8B238B8A18D9E1CE0018B167 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		8B238B8D18D9E2E60018B167 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		8B238B8F18D9E2F90018B167 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8B238B9118D9E3060018B167 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8B238B9318D9E3300018B167 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8B238B9618D9E3F30018B167 /* Aircraft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aircraft.h; sourceTree = "<group>"; };
+		8B238B9718D9E3F30018B167 /* Aircraft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aircraft.m; sourceTree = "<group>"; };
+		8B238B9918D9E4130018B167 /* Flight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flight.h; sourceTree = "<group>"; };
+		8B238B9A18D9E4130018B167 /* Flight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Flight.m; sourceTree = "<group>"; };
+		8B238B9C18D9E8450018B167 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		8B238B9D18D9E8450018B167 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		8B238B9F18D9EC110018B167 /* CustomAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAlertView.h; sourceTree = "<group>"; };
+		8B238BA018D9EC110018B167 /* CustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertView.m; sourceTree = "<group>"; };
+		8B238BA218D9EC390018B167 /* UIView-AlertAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView-AlertAnimations.h"; sourceTree = "<group>"; };
+		8B238BA318D9EC390018B167 /* UIView-AlertAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView-AlertAnimations.m"; sourceTree = "<group>"; };
+		8B238BA518D9F0A50018B167 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font.png; path = Images/font.png; sourceTree = SOURCE_ROOT; };
+		8B238BA618D9F0A50018B167 /* globe_shine_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = globe_shine_light.png; path = Images/globe_shine_light.png; sourceTree = SOURCE_ROOT; };
+		8B238BA718D9F0A50018B167 /* globe_shine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = globe_shine.png; path = Images/globe_shine.png; sourceTree = SOURCE_ROOT; };
+		8B238BA818D9F0A50018B167 /* globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = globe.png; path = Images/globe.png; sourceTree = SOURCE_ROOT; };
+		8B238BA918D9F0A50018B167 /* maingfx.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = maingfx.bin; path = Images/maingfx.bin; sourceTree = SOURCE_ROOT; };
+		8B238BAA18D9F0A50018B167 /* maingfx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = maingfx.png; path = Images/maingfx.png; sourceTree = SOURCE_ROOT; };
+		8B238BB118D9F26A0018B167 /* AirportData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirportData.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +111,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B238B9418D9E3300018B167 /* CFNetwork.framework in Frameworks */,
+				8B238B9218D9E3060018B167 /* QuartzCore.framework in Frameworks */,
+				8B238B9018D9E2F90018B167 /* SystemConfiguration.framework in Frameworks */,
+				8B238B8E18D9E2E60018B167 /* libsqlite3.0.dylib in Frameworks */,
+				8B238B8B18D9E1CE0018B167 /* libxml2.2.dylib in Frameworks */,
+				8B238B8C18D9E1CE0018B167 /* libxml2.dylib in Frameworks */,
+				8B238B8518D9DEE90018B167 /* OpenGLES.framework in Frameworks */,
 				8B238B4618D9C7840018B167 /* CoreGraphics.framework in Frameworks */,
 				8B238B4818D9C7840018B167 /* UIKit.framework in Frameworks */,
 				8B238B4418D9C7840018B167 /* Foundation.framework in Frameworks */,
@@ -77,6 +140,7 @@
 		8B238B3718D9C7840018B167 = {
 			isa = PBXGroup;
 			children = (
+				8B238BB118D9F26A0018B167 /* AirportData.plist */,
 				8B238B4918D9C7840018B167 /* TestGlobe */,
 				8B238B6218D9C7850018B167 /* TestGlobeTests */,
 				8B238B4218D9C7840018B167 /* Frameworks */,
@@ -96,6 +160,13 @@
 		8B238B4218D9C7840018B167 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B238B9318D9E3300018B167 /* CFNetwork.framework */,
+				8B238B9118D9E3060018B167 /* QuartzCore.framework */,
+				8B238B8F18D9E2F90018B167 /* SystemConfiguration.framework */,
+				8B238B8D18D9E2E60018B167 /* libsqlite3.0.dylib */,
+				8B238B8918D9E1CE0018B167 /* libxml2.2.dylib */,
+				8B238B8A18D9E1CE0018B167 /* libxml2.dylib */,
+				8B238B8418D9DEE90018B167 /* OpenGLES.framework */,
 				8B238B4318D9C7840018B167 /* Foundation.framework */,
 				8B238B4518D9C7840018B167 /* CoreGraphics.framework */,
 				8B238B4718D9C7840018B167 /* UIKit.framework */,
@@ -107,8 +178,33 @@
 		8B238B4918D9C7840018B167 /* TestGlobe */ = {
 			isa = PBXGroup;
 			children = (
+				8B238BA518D9F0A50018B167 /* font.png */,
+				8B238BA618D9F0A50018B167 /* globe_shine_light.png */,
+				8B238BA718D9F0A50018B167 /* globe_shine.png */,
+				8B238BA818D9F0A50018B167 /* globe.png */,
+				8B238BA918D9F0A50018B167 /* maingfx.bin */,
+				8B238BAA18D9F0A50018B167 /* maingfx.png */,
+				8B238BA218D9EC390018B167 /* UIView-AlertAnimations.h */,
+				8B238BA318D9EC390018B167 /* UIView-AlertAnimations.m */,
+				8B238B9F18D9EC110018B167 /* CustomAlertView.h */,
+				8B238BA018D9EC110018B167 /* CustomAlertView.m */,
+				8B238B9C18D9E8450018B167 /* GameViewController.h */,
+				8B238B9D18D9E8450018B167 /* GameViewController.m */,
+				8B238B9918D9E4130018B167 /* Flight.h */,
+				8B238B9A18D9E4130018B167 /* Flight.m */,
+				8B238B9618D9E3F30018B167 /* Aircraft.h */,
+				8B238B9718D9E3F30018B167 /* Aircraft.m */,
+				8B238B7718D9CA390018B167 /* EAGLView.h */,
+				8B238B7818D9CA390018B167 /* EAGLView.m */,
 				8B238B5218D9C7840018B167 /* AppDelegate.h */,
 				8B238B5318D9C7840018B167 /* AppDelegate.m */,
+				8B238B7218D9C7AA0018B167 /* GlobeViewController.h */,
+				8B238B7318D9C7AA0018B167 /* GlobeViewController.m */,
+				8B238B7518D9C97B0018B167 /* GlobeViewController.xib */,
+				8B238B7A18D9CBB40018B167 /* GlobeModel.h */,
+				8B238B7B18D9CC320018B167 /* AirportCoords.h */,
+				8B238B7C18D9CC550018B167 /* TagGraphicsfont.h */,
+				8B238B7D18D9CC550018B167 /* TagGraphicsmaingfx.h */,
 				8B238B5518D9C7840018B167 /* Images.xcassets */,
 				8B238B4A18D9C7840018B167 /* Supporting Files */,
 			);
@@ -219,7 +315,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B238B7618D9C97B0018B167 /* GlobeViewController.xib in Resources */,
+				8B238BB018D9F0A50018B167 /* maingfx.png in Resources */,
+				8B238BB218D9F26A0018B167 /* AirportData.plist in Resources */,
+				8B238BAE18D9F0A50018B167 /* globe.png in Resources */,
 				8B238B4E18D9C7840018B167 /* InfoPlist.strings in Resources */,
+				8B238BAC18D9F0A50018B167 /* globe_shine_light.png in Resources */,
+				8B238BAF18D9F0A50018B167 /* maingfx.bin in Resources */,
+				8B238BAD18D9F0A50018B167 /* globe_shine.png in Resources */,
+				8B238BAB18D9F0A50018B167 /* font.png in Resources */,
 				8B238B5618D9C7840018B167 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,8 +343,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B238B9518D9E34A0018B167 /* EAGLView.h in Sources */,
+				8B238B9E18D9E8450018B167 /* GameViewController.m in Sources */,
 				8B238B5418D9C7840018B167 /* AppDelegate.m in Sources */,
+				8B238BA418D9EC390018B167 /* UIView-AlertAnimations.m in Sources */,
+				8B238B7918D9CA390018B167 /* EAGLView.m in Sources */,
+				8B238B9B18D9E4130018B167 /* Flight.m in Sources */,
+				8B238BA118D9EC110018B167 /* CustomAlertView.m in Sources */,
 				8B238B5018D9C7840018B167 /* main.m in Sources */,
+				8B238B9818D9E3F30018B167 /* Aircraft.m in Sources */,
+				8B238B7418D9C7AA0018B167 /* GlobeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,10 +469,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Liten Malvankar (T9FWZDWEDY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestGlobe/TestGlobe-Prefix.pch";
 				INFOPLIST_FILE = "TestGlobe/TestGlobe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8436333D-7137-4A63-9055-EE0261223FDD";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -370,10 +485,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Liten Malvankar (T9FWZDWEDY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Liten Malvankar (T9FWZDWEDY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TestGlobe/TestGlobe-Prefix.pch";
 				INFOPLIST_FILE = "TestGlobe/TestGlobe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8436333D-7137-4A63-9055-EE0261223FDD";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
