@@ -207,7 +207,7 @@ BOOL accelerometerEnabled = NO;
     [self loadTextureFromPNGFileWithName:@"font" ToTex:&TEXNUMBER];
     [self loadTextureFromPNGFileWithName:@"globe_shine_light" ToTex:&globeshine];
     //[self loadTextureFromPNGFileWithName:@"fairclouds" ToTex:&cloudtex];
-    [self loadTextureFromPNGFileWithName:@"game_back_panel" ToTex:&scoretex];
+    //[self loadTextureFromPNGFileWithName:@"game_back_panel" ToTex:&scoretex];
     [self initRenderList:&rl_back withSize:1024];
     [self initRenderList:&rl_front withSize:1024];
     [self initRenderList:&rl_gui withSize:1024];
@@ -1074,34 +1074,34 @@ BOOL accelerometerEnabled = NO;
             //[self drawAirport:&airports[gameAirport]];
 
 
-            //[self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
+            [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
 
             [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
             [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
-            //[self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
+            [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
 
            // [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
 
-            [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
-            [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
+            //[self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
+            //[self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
            // [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
 
 
             if (rotateTouch != -1) {
 
-//                float deltax = (airports[gameAirport].sprite.x - _touches[rotateTouch].tx) / touchScale;
-//                float deltay = (airports[gameAirport].sprite.y - _touches[rotateTouch].ty) / touchScale;
-//                if (deltax < 0) deltax = -deltax;
-//                if (deltay < 0) deltay = -deltay;
-//                float gameTemperatureFloat = 4.999 - ((deltax + deltay) / 10);
-//                gameTemperature = (int) gameTemperatureFloat;
-//                if (gameTemperature < 0) gameTemperature = 0;
-//                if (gameTemperature > 3) gameTemperature = 3;
+                float deltax = (airports[gameAirport].sprite.x - _touches[rotateTouch].tx) / touchScale;
+                float deltay = (airports[gameAirport].sprite.y - _touches[rotateTouch].ty) / touchScale;
+                if (deltax < 0) deltax = -deltax;
+                if (deltay < 0) deltay = -deltay;
+                float gameTemperatureFloat = 4.999 - ((deltax + deltay) / 10);
+                gameTemperature = (int) gameTemperatureFloat;
+                if (gameTemperature < 0) gameTemperature = 0;
+                if (gameTemperature > 3) gameTemperature = 3;
 
             }
 
 
-//            [self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_thermometer1 + gameTemperature] X:/*_touches[rotateTouch].tx + 48*/295 Y:/*_touches[rotateTouch].ty - 48*/295 Z:0 SCALE:0.35f RL:&rl_front];
+            [self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_thermometer1 + gameTemperature] X:/*_touches[rotateTouch].tx + 48*/295 Y:/*_touches[rotateTouch].ty - 48*/295 Z:0 SCALE:0.35f RL:&rl_front];
 
           //  [self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_thermometer1 + gameTemperature] X:/*_touches[rotateTouch].tx + 48*/295 Y:/*_touches[rotateTouch].ty - 48*/295 Z:0 SCALE:0.35f RL:&rl_front];
 
@@ -1111,18 +1111,18 @@ BOOL accelerometerEnabled = NO;
         case GS_AIRPORT_FOUND:
             //[self drawAirport:&airports[gameAirport]];
 
-            //[self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
-            //[self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_brandstar1 + (bransonAnimation >> 2)] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
+            [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
+            [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_brandstar1 + (bransonAnimation >> 2)] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
             //		[self drawNumber:(gameTimer/1000) X:32 Y:32 RL:&rl_gui];
             [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
             [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
-            //[self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
+            [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
 
           //  [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
            // [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_brandstar1 + (bransonAnimation >> 2)] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
             //		[self drawNumber:(gameTimer/1000) X:32 Y:32 RL:&rl_gui];
-            [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
-            [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
+    //[self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
+            //[self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
            // [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
 
             gameTemperature = 0;
@@ -1194,248 +1194,248 @@ BOOL accelerometerEnabled = NO;
 }
 
 
-- (void)processBalloonGame {
-
-    for (int i = 0; i < 4; i++) {
-        switch (gameState) {
-            case GS_BALLOON_INTRO:
-                //if(_touches[i].active && !_touches[i].used && _touches[i].ty<400){
-                //	_touches[i].used=YES;
-
-                //if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_menu] atX:_touches[i].tx atY:_touches[i].ty]){
-                //		gameTouch=-1;
-                //		[self setupObjectsForBalloonGame];
-                //		gameScore=0;
-                //		gameState=GS_BALLOON_GAMEPLAY;
-                //		i=4;
-                //		continue;
-                //}
-                //else if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_settings] atX:_touches[i].tx atY:_touches[i].ty]){
-                //appMode=APP_MODE_FREE;
-                //	globeMode=GLOBE_MODE_FREE;
-                //	i=4;
-                //		continue;
-                //}
-                //}
-                //break;
-            case GS_BALLOON_GAMEPLAY:
-                drawFrame = true;
-                if (_touches[i].active && !_touches[i].used) {
-                    if (gameTouch == -1) {
-
-
-                        //if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_settings] atX:_touches[i].tx atY:_touches[i].ty]){
-                        //	appMode=APP_MODE_FREE;
-                        //	globeMode=GLOBE_MODE_FREE;
-                        //	i=4;
-                        //	continue;
-                        //}
-                        //else{						
-                        gameTouch = i;
-                        gameTouchLastX = _touches[i].tx;
-                        gameTouchLastY = _touches[i].ty;
-                        //}
-                    }
-                }
-
-
-                break;
-            case GS_BALLOON_WIN:
-                //if(_touches[i].active && !_touches[i].used && _touches[i].ty < 400){
-                //	_touches[i].used=YES;
-
-                //if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_menu] atX:_touches[i].tx atY:_touches[i].ty]){
-
-                //	gameObjectCount+=8;
-                //	if(gameObjectCount > MAX_GAME_OBJECTS){
-                //		gameObjectCount=MAX_GAME_OBJECTS;
-                //	}
-                //	gameMaxObjectSpeed+=0.0005;
-                //	if(gameMaxObjectSpeed>0.003){
-                //		gameMaxObjectSpeed=0.003;
-                //	}
-                //	[self setupObjectsForBalloonGame];
-                //	gameState=GS_BALLOON_GAMEPLAY;
-                //	i=4;
-                //	continue;
-                //}
-                //else if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_settings] atX:_touches[i].tx atY:_touches[i].ty]){
-                //	appMode=APP_MODE_FREE;
-                //	globeMode=GLOBE_MODE_FREE;
-                //	i=4;
-                //	continue;
-                //}.
-
-                //}
-                break;
-            case GS_BALLOON_LOSE:
-            case GS_BALLOON_OUT_OF_TIME:
-
-                //if(_touches[i].active && !_touches[i].used && _touches[i].ty<400){
-                //	_touches[i].used=YES;
-
-                //if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_menu] atX:_touches[i].tx atY:_touches[i].ty]){
-                //	
-                //	[self initBalloonGame];
-                //	i=4;
-                //	continue;
-                //}
-                //else if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_settings] atX:_touches[i].tx atY:_touches[i].ty]){
-                //		appMode=APP_MODE_FREE;
-                //		globeMode=GLOBE_MODE_FREE;
-                //		i=4;
-                //		continue;
-                //}
-
-                //}
-
-                break;
-        }
-    }
-
-    globeTargetX = objRichard.north + 180.0f;
-    globeTargetY = -objRichard.east - 90.0f;
-    globeTargetZoom = 40.0;
-
-
-    if (gameState == GS_BALLOON_GAMEPLAY) {
-
-        if (gameTouch != -1) {
-            if (!_touches[gameTouch].active) {
-                gameTouch = -1;
-            }
-            else {
-                objRichard.deast += (((float) (_touches[gameTouch].tx - gameTouchLastX)) * 0.0003);
-                objRichard.dnorth -= (((float) (_touches[gameTouch].ty - gameTouchLastY)) * 0.0003);
-                gameTouchLastX = _touches[gameTouch].tx;
-                gameTouchLastY = _touches[gameTouch].ty;
-            }
-        }
-
-
-        if (objRichard.deast > 0.8) {
-            objRichard.deast = 0.8;
-        }
-        if (objRichard.deast < -0.8) {
-            objRichard.deast = -0.8;
-        }
-
-        if (objRichard.dnorth > 0.8) {
-            objRichard.dnorth = 0.8;
-        }
-        if (objRichard.dnorth < -0.8) {
-            objRichard.dnorth = -0.8;
-        }
-
-        objRichard.east += objRichard.deast;
-        objRichard.north += objRichard.dnorth;
-
-        objRichard.deast *= 0.99;
-        objRichard.dnorth *= 0.99;
-
-        while (objRichard.east >= 180.0f) {
-            objRichard.east -= 360.0f;
-        }
-        while (objRichard.east < -180.0f) {
-            objRichard.east += 360.0f;
-        }
-
-
-        if (objRichard.north > 60.0f) {
-            objRichard.dnorth -= 0.005f;
-        }
-        if (objRichard.north < -60.0f) {
-            objRichard.dnorth += 0.005f;
-        }
-
-        while (objRichard.north > 85.0f) {
-            objRichard.north = 85.0f;
-        }
-        while (objRichard.north < -85.0f) {
-            objRichard.north = 85.0f;
-        }
-
-
-        for (int i = 0; i < gameObjectCount; i++) {
-            objWhirlwind[i].east += objWhirlwind[i].deast;
-            while (objWhirlwind[i].east >= 180.0f) {
-                objWhirlwind[i].east -= 360.0f;
-            }
-            while (objWhirlwind[i].east < -180.0f) {
-                objWhirlwind[i].east += 360.0f;
-            }
-
-            objWhirlwind[i].north += objWhirlwind[i].dnorth;
-            while (objWhirlwind[i].north >= 90.0f) {
-                objWhirlwind[i].north -= 180.0f;
-            }
-            while (objWhirlwind[i].north < -90.0f) {
-                objWhirlwind[i].north += 180.0f;
-            }
-
-            if (objWhirlwind[i].north >= 60.0f) {
-                objWhirlwind[i].dnorth -= (gameMaxObjectSpeed * 2);
-            }
-
-            if (objWhirlwind[i].north <= -60.0f) {
-                objWhirlwind[i].dnorth += (gameMaxObjectSpeed * 2);
-            }
-        }
-
-        float compassDelta = airports[gameAirport].east - objRichard.east;
-        if (compassDelta < 0) {
-            compassDelta = -compassDelta;
-        }
-        if (compassDelta > 180.0f) {
-            gameCompassAngle = atan2((airports[gameAirport].east + 360.0f) - objRichard.east, airports[gameAirport].north - objRichard.north);
-        }
-        else {
-            gameCompassAngle = atan2(airports[gameAirport].east - objRichard.east, airports[gameAirport].north - objRichard.north);
-        }
-        for (int i = 0; i < 3; i++) {
-            objCompass[i].east = objRichard.east + sin(gameCompassAngle) * ((i + 2) * 2);
-            objCompass[i].north = objRichard.north + cos(gameCompassAngle) * ((i + 2) * 2);
-        }
-
-        float airportProximity = sqrt(((objRichard.east - airports[gameAirport].east) * (objRichard.east - airports[gameAirport].east)) + ((objRichard.north - airports[gameAirport].north) * (objRichard.north - airports[gameAirport].north)));
-        //	printf("%f    (%f,%f)  (%f,%f)\n",airportProximity,objRichard.east,objRichard.north,airports[gameAirport].east,airports[gameAirport].north);
-
-        if (airportProximity < 2.0f) {
-            gameScore += gameDistance;
-            gameState = GS_BALLOON_WIN;
-            drawFrame = false;
-            [self.gameInterface showBalloonWin];
-
-        }
-
-        for (int i = 0; i < gameObjectCount; i++) {
-            if (sqrt(((objRichard.east - objWhirlwind[i].east) * (objRichard.east - objWhirlwind[i].east)) + ((objRichard.north - objWhirlwind[i].north) * (objRichard.north - objWhirlwind[i].north))) < 1.5f) {
-                if (gameScore > gameHighScoreBalloon) {
-                    gameHighScoreBalloon = gameScore;
-                    [self saveHighScores];
-                }
-                gameState = GS_BALLOON_LOSE;
-                drawFrame = false;
-                [self.gameInterface showBalloonLose:gameScore withHighScore:gameHighScoreBalloon];
-            }
-        }
-
-        gameTimer -= 15;
-        if (gameTimer <= 0) {
-            if (gameScore > gameHighScoreBalloon) {
-                gameHighScoreBalloon = gameScore;
-                [self saveHighScores];
-            }
-            gameState = GS_BALLOON_OUT_OF_TIME;
-            drawFrame = false;
-            [self.gameInterface showBalloonLose:gameScore withHighScore:gameHighScoreBalloon];
-        }
-
-
-    }
-
-
-}
+//- (void)processBalloonGame {
+//
+//    for (int i = 0; i < 4; i++) {
+//        switch (gameState) {
+//            case GS_BALLOON_INTRO:
+//                //if(_touches[i].active && !_touches[i].used && _touches[i].ty<400){
+//                //	_touches[i].used=YES;
+//
+//                //if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_menu] atX:_touches[i].tx atY:_touches[i].ty]){
+//                //		gameTouch=-1;
+//                //		[self setupObjectsForBalloonGame];
+//                //		gameScore=0;
+//                //		gameState=GS_BALLOON_GAMEPLAY;
+//                //		i=4;
+//                //		continue;
+//                //}
+//                //else if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_settings] atX:_touches[i].tx atY:_touches[i].ty]){
+//                //appMode=APP_MODE_FREE;
+//                //	globeMode=GLOBE_MODE_FREE;
+//                //	i=4;
+//                //		continue;
+//                //}
+//                //}
+//                //break;
+//            case GS_BALLOON_GAMEPLAY:
+//                drawFrame = true;
+//                if (_touches[i].active && !_touches[i].used) {
+//                    if (gameTouch == -1) {
+//
+//
+//                        //if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_settings] atX:_touches[i].tx atY:_touches[i].ty]){
+//                        //	appMode=APP_MODE_FREE;
+//                        //	globeMode=GLOBE_MODE_FREE;
+//                        //	i=4;
+//                        //	continue;
+//                        //}
+//                        //else{						
+//                        gameTouch = i;
+//                        gameTouchLastX = _touches[i].tx;
+//                        gameTouchLastY = _touches[i].ty;
+//                        //}
+//                    }
+//                }
+//
+//
+//                break;
+//            case GS_BALLOON_WIN:
+//                //if(_touches[i].active && !_touches[i].used && _touches[i].ty < 400){
+//                //	_touches[i].used=YES;
+//
+//                //if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_menu] atX:_touches[i].tx atY:_touches[i].ty]){
+//
+//                //	gameObjectCount+=8;
+//                //	if(gameObjectCount > MAX_GAME_OBJECTS){
+//                //		gameObjectCount=MAX_GAME_OBJECTS;
+//                //	}
+//                //	gameMaxObjectSpeed+=0.0005;
+//                //	if(gameMaxObjectSpeed>0.003){
+//                //		gameMaxObjectSpeed=0.003;
+//                //	}
+//                //	[self setupObjectsForBalloonGame];
+//                //	gameState=GS_BALLOON_GAMEPLAY;
+//                //	i=4;
+//                //	continue;
+//                //}
+//                //else if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_settings] atX:_touches[i].tx atY:_touches[i].ty]){
+//                //	appMode=APP_MODE_FREE;
+//                //	globeMode=GLOBE_MODE_FREE;
+//                //	i=4;
+//                //	continue;
+//                //}.
+//
+//                //}
+//                break;
+//            case GS_BALLOON_LOSE:
+//            case GS_BALLOON_OUT_OF_TIME:
+//
+//                //if(_touches[i].active && !_touches[i].used && _touches[i].ty<400){
+//                //	_touches[i].used=YES;
+//
+//                //if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_menu] atX:_touches[i].tx atY:_touches[i].ty]){
+//                //	
+//                //	[self initBalloonGame];
+//                //	i=4;
+//                //	continue;
+//                //}
+//                //else if([self checkForSpriteTouched:&ts_main[GRAPHICS_maingfx_settings] atX:_touches[i].tx atY:_touches[i].ty]){
+//                //		appMode=APP_MODE_FREE;
+//                //		globeMode=GLOBE_MODE_FREE;
+//                //		i=4;
+//                //		continue;
+//                //}
+//
+//                //}
+//
+//                break;
+//        }
+//    }
+//
+//    globeTargetX = objRichard.north + 180.0f;
+//    globeTargetY = -objRichard.east - 90.0f;
+//    globeTargetZoom = 40.0;
+//
+//
+//    if (gameState == GS_BALLOON_GAMEPLAY) {
+//
+//        if (gameTouch != -1) {
+//            if (!_touches[gameTouch].active) {
+//                gameTouch = -1;
+//            }
+//            else {
+//                objRichard.deast += (((float) (_touches[gameTouch].tx - gameTouchLastX)) * 0.0003);
+//                objRichard.dnorth -= (((float) (_touches[gameTouch].ty - gameTouchLastY)) * 0.0003);
+//                gameTouchLastX = _touches[gameTouch].tx;
+//                gameTouchLastY = _touches[gameTouch].ty;
+//            }
+//        }
+//
+//
+//        if (objRichard.deast > 0.8) {
+//            objRichard.deast = 0.8;
+//        }
+//        if (objRichard.deast < -0.8) {
+//            objRichard.deast = -0.8;
+//        }
+//
+//        if (objRichard.dnorth > 0.8) {
+//            objRichard.dnorth = 0.8;
+//        }
+//        if (objRichard.dnorth < -0.8) {
+//            objRichard.dnorth = -0.8;
+//        }
+//
+//        objRichard.east += objRichard.deast;
+//        objRichard.north += objRichard.dnorth;
+//
+//        objRichard.deast *= 0.99;
+//        objRichard.dnorth *= 0.99;
+//
+//        while (objRichard.east >= 180.0f) {
+//            objRichard.east -= 360.0f;
+//        }
+//        while (objRichard.east < -180.0f) {
+//            objRichard.east += 360.0f;
+//        }
+//
+//
+//        if (objRichard.north > 60.0f) {
+//            objRichard.dnorth -= 0.005f;
+//        }
+//        if (objRichard.north < -60.0f) {
+//            objRichard.dnorth += 0.005f;
+//        }
+//
+//        while (objRichard.north > 85.0f) {
+//            objRichard.north = 85.0f;
+//        }
+//        while (objRichard.north < -85.0f) {
+//            objRichard.north = 85.0f;
+//        }
+//
+//
+//        for (int i = 0; i < gameObjectCount; i++) {
+//            objWhirlwind[i].east += objWhirlwind[i].deast;
+//            while (objWhirlwind[i].east >= 180.0f) {
+//                objWhirlwind[i].east -= 360.0f;
+//            }
+//            while (objWhirlwind[i].east < -180.0f) {
+//                objWhirlwind[i].east += 360.0f;
+//            }
+//
+//            objWhirlwind[i].north += objWhirlwind[i].dnorth;
+//            while (objWhirlwind[i].north >= 90.0f) {
+//                objWhirlwind[i].north -= 180.0f;
+//            }
+//            while (objWhirlwind[i].north < -90.0f) {
+//                objWhirlwind[i].north += 180.0f;
+//            }
+//
+//            if (objWhirlwind[i].north >= 60.0f) {
+//                objWhirlwind[i].dnorth -= (gameMaxObjectSpeed * 2);
+//            }
+//
+//            if (objWhirlwind[i].north <= -60.0f) {
+//                objWhirlwind[i].dnorth += (gameMaxObjectSpeed * 2);
+//            }
+//        }
+//
+//        float compassDelta = airports[gameAirport].east - objRichard.east;
+//        if (compassDelta < 0) {
+//            compassDelta = -compassDelta;
+//        }
+//        if (compassDelta > 180.0f) {
+//            gameCompassAngle = atan2((airports[gameAirport].east + 360.0f) - objRichard.east, airports[gameAirport].north - objRichard.north);
+//        }
+//        else {
+//            gameCompassAngle = atan2(airports[gameAirport].east - objRichard.east, airports[gameAirport].north - objRichard.north);
+//        }
+//        for (int i = 0; i < 3; i++) {
+//            objCompass[i].east = objRichard.east + sin(gameCompassAngle) * ((i + 2) * 2);
+//            objCompass[i].north = objRichard.north + cos(gameCompassAngle) * ((i + 2) * 2);
+//        }
+//
+//        float airportProximity = sqrt(((objRichard.east - airports[gameAirport].east) * (objRichard.east - airports[gameAirport].east)) + ((objRichard.north - airports[gameAirport].north) * (objRichard.north - airports[gameAirport].north)));
+//        //	printf("%f    (%f,%f)  (%f,%f)\n",airportProximity,objRichard.east,objRichard.north,airports[gameAirport].east,airports[gameAirport].north);
+//
+//        if (airportProximity < 2.0f) {
+//            gameScore += gameDistance;
+//            gameState = GS_BALLOON_WIN;
+//            drawFrame = false;
+//            [self.gameInterface showBalloonWin];
+//
+//        }
+//
+//        for (int i = 0; i < gameObjectCount; i++) {
+//            if (sqrt(((objRichard.east - objWhirlwind[i].east) * (objRichard.east - objWhirlwind[i].east)) + ((objRichard.north - objWhirlwind[i].north) * (objRichard.north - objWhirlwind[i].north))) < 1.5f) {
+//                if (gameScore > gameHighScoreBalloon) {
+//                    gameHighScoreBalloon = gameScore;
+//                    [self saveHighScores];
+//                }
+//                gameState = GS_BALLOON_LOSE;
+//                drawFrame = false;
+//                [self.gameInterface showBalloonLose:gameScore withHighScore:gameHighScoreBalloon];
+//            }
+//        }
+//
+//        gameTimer -= 15;
+//        if (gameTimer <= 0) {
+//            if (gameScore > gameHighScoreBalloon) {
+//                gameHighScoreBalloon = gameScore;
+//                [self saveHighScores];
+//            }
+//            gameState = GS_BALLOON_OUT_OF_TIME;
+//            drawFrame = false;
+//            [self.gameInterface showBalloonLose:gameScore withHighScore:gameHighScoreBalloon];
+//        }
+//
+//
+//    }
+//
+//
+//}
 
 - (void)drawBalloonGame {
 
@@ -1557,9 +1557,9 @@ BOOL accelerometerEnabled = NO;
 }
 
 - (float)getDistanceForSpriteTouched:(sprite_t *)inSprite AtX:(int)inX atY:(int)inY {
-//    float current_distance = sqrt(((inX - inSprite->x) * (inX - inSprite->x)) + ((inY - inSprite->y) * (inY - inSprite->y)));
-//    return current_distance;
-    return 1.0;
+    float current_distance = sqrt(((inX - inSprite->x) * (inX - inSprite->x)) + ((inY - inSprite->y) * (inY - inSprite->y)));
+    return current_distance;
+    //return 1.0;
 }
 
 - (void)setOrthoProjection {
@@ -1971,101 +1971,101 @@ BOOL accelerometerEnabled = NO;
 }
 
 
-- (void)drawFlightpath:(flightpath_t *)ap {
-
-    float x, y, z;
-    float res[4];
-
-    int p = 0;
-    float spacing = 2;
-    float current = 0, last = 0, distance = 0;
-    float lx, ly, lz, ix, iy, iz, ifactor;
-
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glRotatef(rotateX, 1.0f, 0.0f, 0.0f);
-    glRotatef(rotateY, 0.0f, 1.0f, 0.0f);
-
-    for (int i = 0; i < ap->dot_count; i++) {
-
-
-        lx = x;
-        ly = y;
-        lz = z;
-        last = current;
-
-        x = ap->dots[p++];
-        y = ap->dots[p++];
-        z = ap->dots[p++];
-
-        if (i > 0) {
-            distance = sqrt(((x - lx) * (x - lx)) + ((y - ly) * (y - ly)) + ((z - lz) * (z - lz)));
-            current += distance;
-            if (current >= spacing) {
-                ifactor = ((spacing - last) / (current - last));
-                ix = (1 - ifactor) * lx + ifactor * x;
-                iy = (1 - ifactor) * ly + ifactor * y;
-                iz = (1 - ifactor) * lz + ifactor * z;
-
-                [self getScreenCoordsForX:ix forY:iy forZ:iz resultX:&res[0] resultY:&res[1] resultZ:&res[2] resultMZ:&res[3]];
-
-                float unit_size = touchScale * 16;
-                if (res[3] < (globe_radius * 0.5)) {
-                    //[self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_marker] X:res[0] Y:res[1] Z:0 SCALE:point_sprite_scale RL:&rl_back];
-                }
-                else {
-                    [self drawTagSpritePointRotated:&ts_main[GRAPHICS_maingfx_marker3] X:res[0] Y:res[1] Z:0 SCALE:(point_sprite_scale * 0.6) UNIT:unit_size ANGLE:0.0f RL:&rl_front];
-                }
-
-                current -= spacing;
-            }
-        }
-    }
-
-
-    current = 0;
-    last = 0;
-    distance = 0;
-
-    p = 0;
-
-    for (int i = 0; i < ap->dot_count2; i++) {
-
-
-        lx = x;
-        ly = y;
-        lz = z;
-        last = current;
-
-        x = ap->dots2[p++];
-        y = ap->dots2[p++];
-        z = ap->dots2[p++];
-
-        if (i > 0) {
-            distance = sqrt(((x - lx) * (x - lx)) + ((y - ly) * (y - ly)) + ((z - lz) * (z - lz)));
-            current += distance;
-            if (current >= spacing) {
-                ifactor = ((spacing - last) / (current - last));
-                ix = (1 - ifactor) * lx + ifactor * x;
-                iy = (1 - ifactor) * ly + ifactor * y;
-                iz = (1 - ifactor) * lz + ifactor * z;
-
-                [self getScreenCoordsForX:ix forY:iy forZ:iz resultX:&res[0] resultY:&res[1] resultZ:&res[2] resultMZ:&res[3]];
-
-                float unit_size = touchScale * 16;
-
-                if (res[3] < (globe_radius * 0.5)) {
-                    //[self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_marker] X:res[0] Y:res[1] Z:0 SCALE:point_sprite_scale RL:&rl_back];
-                }
-                else {
-                    [self drawTagSpritePointRotated:&ts_main[GRAPHICS_maingfx_marker2] X:res[0] Y:res[1] Z:0 SCALE:(point_sprite_scale * 0.6) UNIT:unit_size ANGLE:0.0f RL:&rl_front];
-                }
-
-                current -= spacing;
-            }
-        }
-    }
-}
+//- (void)drawFlightpath:(flightpath_t *)ap {
+//
+//    float x, y, z;
+//    float res[4];
+//
+//    int p = 0;
+//    float spacing = 2;
+//    float current = 0, last = 0, distance = 0;
+//    float lx, ly, lz, ix, iy, iz, ifactor;
+//
+//    glMatrixMode(GL_MODELVIEW);
+//    glLoadIdentity();
+//    glRotatef(rotateX, 1.0f, 0.0f, 0.0f);
+//    glRotatef(rotateY, 0.0f, 1.0f, 0.0f);
+//
+//    for (int i = 0; i < ap->dot_count; i++) {
+//
+//
+//        lx = x;
+//        ly = y;
+//        lz = z;
+//        last = current;
+//
+//        x = ap->dots[p++];
+//        y = ap->dots[p++];
+//        z = ap->dots[p++];
+//
+//        if (i > 0) {
+//            distance = sqrt(((x - lx) * (x - lx)) + ((y - ly) * (y - ly)) + ((z - lz) * (z - lz)));
+//            current += distance;
+//            if (current >= spacing) {
+//                ifactor = ((spacing - last) / (current - last));
+//                ix = (1 - ifactor) * lx + ifactor * x;
+//                iy = (1 - ifactor) * ly + ifactor * y;
+//                iz = (1 - ifactor) * lz + ifactor * z;
+//
+//                [self getScreenCoordsForX:ix forY:iy forZ:iz resultX:&res[0] resultY:&res[1] resultZ:&res[2] resultMZ:&res[3]];
+//
+//                float unit_size = touchScale * 16;
+//                if (res[3] < (globe_radius * 0.5)) {
+//                    //[self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_marker] X:res[0] Y:res[1] Z:0 SCALE:point_sprite_scale RL:&rl_back];
+//                }
+//                else {
+//                    [self drawTagSpritePointRotated:&ts_main[GRAPHICS_maingfx_marker3] X:res[0] Y:res[1] Z:0 SCALE:(point_sprite_scale * 0.6) UNIT:unit_size ANGLE:0.0f RL:&rl_front];
+//                }
+//
+//                current -= spacing;
+//            }
+//        }
+//    }
+//
+//
+//    current = 0;
+//    last = 0;
+//    distance = 0;
+//
+//    p = 0;
+//
+//    for (int i = 0; i < ap->dot_count2; i++) {
+//
+//
+//        lx = x;
+//        ly = y;
+//        lz = z;
+//        last = current;
+//
+//        x = ap->dots2[p++];
+//        y = ap->dots2[p++];
+//        z = ap->dots2[p++];
+//
+//        if (i > 0) {
+//            distance = sqrt(((x - lx) * (x - lx)) + ((y - ly) * (y - ly)) + ((z - lz) * (z - lz)));
+//            current += distance;
+//            if (current >= spacing) {
+//                ifactor = ((spacing - last) / (current - last));
+//                ix = (1 - ifactor) * lx + ifactor * x;
+//                iy = (1 - ifactor) * ly + ifactor * y;
+//                iz = (1 - ifactor) * lz + ifactor * z;
+//
+//                [self getScreenCoordsForX:ix forY:iy forZ:iz resultX:&res[0] resultY:&res[1] resultZ:&res[2] resultMZ:&res[3]];
+//
+//                float unit_size = touchScale * 16;
+//
+//                if (res[3] < (globe_radius * 0.5)) {
+//                    //[self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_marker] X:res[0] Y:res[1] Z:0 SCALE:point_sprite_scale RL:&rl_back];
+//                }
+//                else {
+//                    [self drawTagSpritePointRotated:&ts_main[GRAPHICS_maingfx_marker2] X:res[0] Y:res[1] Z:0 SCALE:(point_sprite_scale * 0.6) UNIT:unit_size ANGLE:0.0f RL:&rl_front];
+//                }
+//
+//                current -= spacing;
+//            }
+//        }
+//    }
+//}
 
 
 - (void)getScreenCoordsForX:(float)inX forY:(float)inY forZ:(float)inZ resultX:(float *)inRX resultY:(float *)inRY resultZ:(float *)inRZ resultMZ:(float *)inRMZ {
