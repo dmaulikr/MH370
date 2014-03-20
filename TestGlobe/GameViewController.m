@@ -29,15 +29,9 @@
 	
     self = [super init];
 	if (self != nil) {
-		AppDelegate* delegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
 		
-//        if (delegate.bSupportsAPNS) {
-//			//glView = delegate.glView;
-//            glView= [[EAGLView alloc] initWithFrame:CGRectMake(0, 0, 320, 382)];
-//		}
-//        else {
-			glView= [[EAGLView alloc] initWithFrame:CGRectMake(0, 0, 320, 382)];
-		//}
+        glView= [[EAGLView alloc] initWithFrame:CGRectMake(0, 64, 320, self.view.bounds.size.height)];
+		
 		self.view =glView;
         
 		[self initGame:gMode];
@@ -105,8 +99,7 @@
 }
 
 //origional slifhtly altered functions
--(void) initAlternateGame
-{	
+-(void) initAlternateGame {	
 	switch(gameMode){
 		case 0:
 			[self showWheresRichardIntro];

@@ -155,7 +155,7 @@ BOOL accelerometerEnabled = NO;
 //The GL view is stored in the nib file. When it's unarchived it's sent -initWithCoder:
 - (id)initWithFrame:(CGRect)frame {
 
-    NSLog(@"%s ", __PRETTY_FUNCTION__);
+    //NSLog(@"%s ", __PRETTY_FUNCTION__);
 
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(airportDataManagerUpdated) name:@"AirportDataUpdated" object:nil];
 
@@ -179,14 +179,14 @@ BOOL accelerometerEnabled = NO;
 
         [self initResources];
 
-        drawAirportShortName = TRUE;
+        //drawAirportShortName = TRUE;
         animationInterval = 1.0 / 60.0;
-        airportLabels = [[NSMutableArray alloc] init];
-        perLoaded = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 250, 20)];
-        perLoaded.backgroundColor = [UIColor clearColor];
-        perLoaded.textColor = [UIColor whiteColor];
-        perLoaded.font = [UIFont fontWithName:@"Arial" size:18];
-        [self addSubview:perLoaded];
+        //airportLabels = [[NSMutableArray alloc] init];
+        //perLoaded = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 250, 20)];
+        //perLoaded.backgroundColor = [UIColor clearColor];
+        //perLoaded.textColor = [UIColor whiteColor];
+        //perLoaded.font = [UIFont fontWithName:@"Arial" size:18];
+        //[self addSubview:perLoaded];
 
     }
 
@@ -198,7 +198,7 @@ BOOL accelerometerEnabled = NO;
 
     //NSLog(@"%s ", __PRETTY_FUNCTION__);
 
-    drawingBalloon = false;
+    //drawingBalloon = false;
     [self loadHighScores];
     textScale = (35.0 / 60.0);
     GLuint TEXGLOBE, TEXMAIN, TEXNUMBER;
@@ -230,19 +230,13 @@ BOOL accelerometerEnabled = NO;
 #pragma mark Airport Plotting
 
     NSArray *airportsArray = [[[AirportDataManager sharedInstance] allAirports] retain];
-//
-//	
-//	
+		
     airports = (airport_t *) malloc(sizeof(airport_t) * airportsArray.count);
-//
-////    NSLog(@"%s ", __PRETTY_FUNCTION__);
-////    NSLog(@"Current thread = %@", [NSThread currentThread]);
-////    NSLog(@"airportCount = %u", airportsArray.count);
-//
+
     primaryAirportIndexes = [[NSMutableArray array] retain];
-//
+
 	static int counter = 0;
-//	
+	
     for (int i = 0; i < airportsArray.count; i++) {
 
         //NSLog(@"Load airport %d", i);
@@ -327,7 +321,7 @@ BOOL accelerometerEnabled = NO;
 - (void)drawView {
     if (updateDraw) {
 
-        AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+        //AppDelegate *delegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
 
         ticks++;
 

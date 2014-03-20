@@ -27,8 +27,8 @@
 
 - (id) initWithGame:(int)gMode;
 - (void) initGame:(int)gMode;
-- (void) showBalloonWin;
-- (void) showBalloonLose:(int)inScore withHighScore:(int)inHighScore;
+//- (void) showBalloonWin;
+//- (void) showBalloonLose:(int)inScore withHighScore:(int)inHighScore;
 - (void) showFindRichardResult:(int)inScore withHighScore:(int)inHighScore;
 
 @end
