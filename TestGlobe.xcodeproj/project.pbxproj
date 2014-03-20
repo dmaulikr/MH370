@@ -47,6 +47,8 @@
 		8B238BBB18DA0B4D0018B167 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B238BBA18DA0B4D0018B167 /* CoreDataStack.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8B238BBE18DA12320018B167 /* Tweets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B238BBC18DA12320018B167 /* Tweets.xcdatamodeld */; };
 		8B238BC018DA15BC0018B167 /* AirportDataPrimaryOnly.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B238BBF18DA15BB0018B167 /* AirportDataPrimaryOnly.plist */; };
+		8B83ED9B18DB1165003342FE /* App_infoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B83ED9918DB1165003342FE /* App_infoViewController.m */; };
+		8B83ED9C18DB1165003342FE /* App_infoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83ED9A18DB1165003342FE /* App_infoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,9 @@
 		8B238BBA18DA0B4D0018B167 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
 		8B238BBD18DA12320018B167 /* Tweets.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tweets.xcdatamodel; sourceTree = "<group>"; };
 		8B238BBF18DA15BB0018B167 /* AirportDataPrimaryOnly.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirportDataPrimaryOnly.plist; sourceTree = "<group>"; };
+		8B83ED9818DB1165003342FE /* App_infoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App_infoViewController.h; sourceTree = "<group>"; };
+		8B83ED9918DB1165003342FE /* App_infoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App_infoViewController.m; sourceTree = "<group>"; };
+		8B83ED9A18DB1165003342FE /* App_infoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = App_infoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +231,9 @@
 				8B238B7B18D9CC320018B167 /* AirportCoords.h */,
 				8B238B7C18D9CC550018B167 /* TagGraphicsfont.h */,
 				8B238B7D18D9CC550018B167 /* TagGraphicsmaingfx.h */,
+				8B83ED9818DB1165003342FE /* App_infoViewController.h */,
+				8B83ED9918DB1165003342FE /* App_infoViewController.m */,
+				8B83ED9A18DB1165003342FE /* App_infoViewController.xib */,
 				8B238B5518D9C7840018B167 /* Images.xcassets */,
 				8B238B4A18D9C7840018B167 /* Supporting Files */,
 			);
@@ -346,6 +354,7 @@
 				8B238BAD18D9F0A50018B167 /* globe_shine.png in Resources */,
 				8B238BAB18D9F0A50018B167 /* font.png in Resources */,
 				8B238BC018DA15BC0018B167 /* AirportDataPrimaryOnly.plist in Resources */,
+				8B83ED9C18DB1165003342FE /* App_infoViewController.xib in Resources */,
 				8B238B5618D9C7840018B167 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +382,7 @@
 				8B238BA418D9EC390018B167 /* UIView-AlertAnimations.m in Sources */,
 				8B238B7918D9CA390018B167 /* EAGLView.m in Sources */,
 				8B238B9B18D9E4130018B167 /* Flight.m in Sources */,
+				8B83ED9B18DB1165003342FE /* App_infoViewController.m in Sources */,
 				8B238BA118D9EC110018B167 /* CustomAlertView.m in Sources */,
 				8B238B5018D9C7840018B167 /* main.m in Sources */,
 				8B238B9818D9E3F30018B167 /* Aircraft.m in Sources */,
