@@ -8,6 +8,8 @@
 
 #import "GlobeViewController.h"
 #import "GameViewController.h"
+#import "App_infoViewController.h"
+
 @interface GlobeViewController ()
 
 @end
@@ -25,6 +27,7 @@
 
 - (void)viewDidLoad
 {
+    //[self.navigationController setNavigationBarHidden:YES];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -40,6 +43,7 @@
 	
         if (self.Game == nil) {
             GameViewController * controller = [[GameViewController alloc]initWithGame:0];
+            controller.navigationController.navigationBarHidden =TRUE;
             
             self.Game = controller;
             [controller release];
@@ -48,9 +52,19 @@
         else {
             [self.Game initGame:0];
         }
-        [self.navigationController pushViewController:self.Game animated:YES];
-        
+       // [self.navigationController pushViewController:self.Game animated:YES];
+    [self presentViewController:self.Game animated:NO completion:nil];
    
+}
+
+-(IBAction)btnInfo
+{
+	
+    App_infoViewController *objApp_infoViewController=[[App_infoViewController alloc]initWithNibName:@"App_infoViewController" bundle:nil];
+    [self presentViewController:objApp_infoViewController animated:YES completion:nil];
+    [objApp_infoViewController release];
+    objApp_infoViewController=nil;
+    
 }
 /*
 #pragma mark - Navigation
