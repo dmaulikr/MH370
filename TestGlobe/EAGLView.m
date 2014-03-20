@@ -348,92 +348,92 @@ BOOL accelerometerEnabled = NO;
         [self resetRenderList:&rl_gui];
 
         switch (appMode) {
-            case APP_MODE_FREE: {
+//            case APP_MODE_FREE: {
+////
+////                perLoaded.text = @"Loading please wait...";
+////                for (int i = 0; i < 4; i++) {
+////
+////                    if (_touches[i].active && !_touches[i].used) {
+////                        object_type = -1;
+////                        nearest_plane = -1;
+////                        nearest_airport = -1;
+////                        float nearest_object = 99999.0f;
+////                        float current_object = 0.0f;
+////                        nearest_plane = [self checkForPlaneTouchedAtX:_touches[i].tx atY:_touches[i].ty returnDistance:&current_object];
+////                        if (nearest_plane >= 0) {
+////                            if (current_object < nearest_object) {
+////                                nearest_object = current_object;
+////                                object_type = 0;
+////                            }
+////                        }
+////                        nearest_airport = [self checkForAirportTouchedAtX:_touches[i].tx atY:_touches[i].ty returnDistance:&current_object];
+////                        if (nearest_airport >= 0) {
+////                            if (current_object < nearest_object) {
+////                                object_type = 1;
+////                            }
+////                        }
+////                    }
+////                }
+////                int i = 0;
+////                if (!_touches[i].active && !_touches[i].used) {
+////
+////                    if (zoomLevel < 50) {
+////                        switch (object_type) {
+////                            case 0:
+////                                if (_touches[i].taps == 1 && !_touches[i].used) {
+////                                    _touches[i].taps = 0;
+////                                    selectedPlane = nearest_plane;
+////
+////                                    //Aircraft *aircraft = planes[selectedPlane].ac;
+////                                    //[self.globeInterface tappedOnAircraft:aircraft withApp:appPtr];
+////                                }
+////                                break;
+////
+////                            case 1:
+////                                if (_touches[i].taps == 1 && !_touches[i].used) {
+////                                    _touches[i].taps = 0;
+////                                    _touches[i].used = YES;
+////                                    //NSString *Airport = airports[nearest_airport].name;
+////                                    //[self.globeInterface tappedOnAirportWith:(NSString *) Airport];
+////                                }
+////                                break;
+////                        }
+////                    }
+////                }
+//            }
+//                break;
 
-                perLoaded.text = @"Loading please wait...";
-                for (int i = 0; i < 4; i++) {
+//            case APP_MODE_PLANE:
+////                perLoaded.text = @"Loading please wait...";
+////                for (int i = 0; i < 4; i++) {
+////                    if (_touches[i].active && !_touches[i].used) {
+////                        globeMode = GLOBE_MODE_FREE;
+////                        i = 4;
+////                        continue;
+////                    }
+////                }
+////
+////
+////                [self processTrackPlane];
+//
+//                break;
 
-                    if (_touches[i].active && !_touches[i].used) {
-                        object_type = -1;
-                        nearest_plane = -1;
-                        nearest_airport = -1;
-                        float nearest_object = 99999.0f;
-                        float current_object = 0.0f;
-                        nearest_plane = [self checkForPlaneTouchedAtX:_touches[i].tx atY:_touches[i].ty returnDistance:&current_object];
-                        if (nearest_plane >= 0) {
-                            if (current_object < nearest_object) {
-                                nearest_object = current_object;
-                                object_type = 0;
-                            }
-                        }
-                        nearest_airport = [self checkForAirportTouchedAtX:_touches[i].tx atY:_touches[i].ty returnDistance:&current_object];
-                        if (nearest_airport >= 0) {
-                            if (current_object < nearest_object) {
-                                object_type = 1;
-                            }
-                        }
-                    }
-                }
-                int i = 0;
-                if (!_touches[i].active && !_touches[i].used) {
-
-                    if (zoomLevel < 50) {
-                        switch (object_type) {
-                            case 0:
-                                if (_touches[i].taps == 1 && !_touches[i].used) {
-                                    _touches[i].taps = 0;
-                                    selectedPlane = nearest_plane;
-
-                                    //Aircraft *aircraft = planes[selectedPlane].ac;
-                                    //[self.globeInterface tappedOnAircraft:aircraft withApp:appPtr];
-                                }
-                                break;
-
-                            case 1:
-                                if (_touches[i].taps == 1 && !_touches[i].used) {
-                                    _touches[i].taps = 0;
-                                    _touches[i].used = YES;
-                                    //NSString *Airport = airports[nearest_airport].name;
-                                    //[self.globeInterface tappedOnAirportWith:(NSString *) Airport];
-                                }
-                                break;
-                        }
-                    }
-                }
-            }
-                break;
-
-            case APP_MODE_PLANE:
-                perLoaded.text = @"Loading please wait...";
-                for (int i = 0; i < 4; i++) {
-                    if (_touches[i].active && !_touches[i].used) {
-                        globeMode = GLOBE_MODE_FREE;
-                        i = 4;
-                        continue;
-                    }
-                }
-
-
-                [self processTrackPlane];
-
-                break;
-
-            case APP_MODE_AIRPORT:
-                perLoaded.text = @"";
-                globeTargetX = airports[selectedAirport].north + 180.0f;
-                globeTargetY = -airports[selectedAirport].east - 90.0f;
-                globeTargetZoom = 40.0;
-                break;
+//            case APP_MODE_AIRPORT:
+//                perLoaded.text = @"";
+//                globeTargetX = airports[selectedAirport].north + 180.0f;
+//                globeTargetY = -airports[selectedAirport].east - 90.0f;
+//                globeTargetZoom = 40.0;
+//                break;
 
             case APP_MODE_GAME_AIRPORT:
                 perLoaded.text = @"";
                 [self processAirportGame];
                 break;
 
-            case APP_MODE_GAME_BALLOON:
-                perLoaded.text = @"";
-                [self processBalloonGame];
-                break;
+//            case APP_MODE_GAME_BALLOON:
+//                perLoaded.text = @"";
+//                //[self processBalloonGame];
+//                break;
 
         }
 
@@ -586,50 +586,50 @@ BOOL accelerometerEnabled = NO;
 
                 break;
 
-            case GLOBE_MODE_TARGET:
-
-                while (globeTargetY >= 360.0f) {
-                    globeTargetY -= 360.0f;
-                }
-
-                while (globeTargetY < 0.0f) {
-                    globeTargetY += 360.0f;
-                }
-
-                if ((globeTargetY > rotateY && (globeTargetY - rotateY) < 180.0f) || (globeTargetY < rotateY && (rotateY - globeTargetY) >= 180.0f)) {
-                    //positive
-                    float delta = globeTargetY - rotateY;
-                    if (delta < 0) {
-                        delta = -delta;
-                    }
-                    if (delta > 180.0f) {
-                        delta = 360.0f - delta;
-                    }
-
-                    rotateY += (delta * 0.05);
-
-
-                }
-                else {
-                    //negative
-                    float delta = globeTargetY - rotateY;
-                    if (delta < 0) {
-                        delta = -delta;
-                    }
-                    if (delta > 180.0f) {
-                        delta = 360.0f - delta;
-                    }
-
-                    rotateY -= (delta * 0.05);
-
-                }
-
-
-                rotateX += (((globeTargetX) - rotateX) * 0.05);
-
-                zoomLevel += (((globeTargetZoom) - zoomLevel) * 0.05);
-
-                break;
+//            case GLOBE_MODE_TARGET:
+//
+//                while (globeTargetY >= 360.0f) {
+//                    globeTargetY -= 360.0f;
+//                }
+//
+//                while (globeTargetY < 0.0f) {
+//                    globeTargetY += 360.0f;
+//                }
+//
+//                if ((globeTargetY > rotateY && (globeTargetY - rotateY) < 180.0f) || (globeTargetY < rotateY && (rotateY - globeTargetY) >= 180.0f)) {
+//                    //positive
+//                    float delta = globeTargetY - rotateY;
+//                    if (delta < 0) {
+//                        delta = -delta;
+//                    }
+//                    if (delta > 180.0f) {
+//                        delta = 360.0f - delta;
+//                    }
+//
+//                    rotateY += (delta * 0.05);
+//
+//
+//                }
+//                else {
+//                    //negative
+//                    float delta = globeTargetY - rotateY;
+//                    if (delta < 0) {
+//                        delta = -delta;
+//                    }
+//                    if (delta > 180.0f) {
+//                        delta = 360.0f - delta;
+//                    }
+//
+//                    rotateY -= (delta * 0.05);
+//
+//                }
+//
+//
+//                rotateX += (((globeTargetX) - rotateX) * 0.05);
+//
+//                zoomLevel += (((globeTargetZoom) - zoomLevel) * 0.05);
+//
+//                break;
         }
 
 
@@ -667,68 +667,68 @@ BOOL accelerometerEnabled = NO;
         [self setGlobeProjection];
 
         switch (appMode) {
-            case APP_MODE_FREE:
-
-
-                //this should draw all of them...
-//                for (int i = 0; i < [[AirportDataManager sharedInstance] airportCount]; i++) {
-//                    [self drawAirport:&airports[i]];
-//                }
-
-                /* OLD C DRAWING CODE - DON'T REMOVE
-                for(int i=0;i<NUM_PRIMARY_AIRPORTS;i++){
-					[self drawAirport:&airports[airport_primary_list[i]]];
-				}
-                */
-
-                flight_progress += 0.001;
-                while (flight_progress >= 1.0f) {
-                    flight_progress -= 1.0f;
-                }
-
-
-//				for(int i=0;i<MAX_PLANES;i++){
-//					if(planes[i].used==YES){
-////						if(planes[i].flight->used==YES){
-////							//					[self drawFlightpath:&flightpaths[i]];
-////						}
-//					}
-//				}
+//            case APP_MODE_FREE:
 //
-                for (int i = 0; i < MAX_PLANES; i++) {
-                    if (planes[i].used == YES) {
-                        [self drawPlane:&planes[i]];
-                    }
-                }
+//
+//                //this should draw all of them...
+////                for (int i = 0; i < [[AirportDataManager sharedInstance] airportCount]; i++) {
+////                    [self drawAirport:&airports[i]];
+////                }
+//
+//                /* OLD C DRAWING CODE - DON'T REMOVE
+//                for(int i=0;i<NUM_PRIMARY_AIRPORTS;i++){
+//					[self drawAirport:&airports[airport_primary_list[i]]];
+//				}
+//                */
+//
+//                flight_progress += 0.001;
+//                while (flight_progress >= 1.0f) {
+//                    flight_progress -= 1.0f;
+//                }
+//
+//
+////				for(int i=0;i<MAX_PLANES;i++){
+////					if(planes[i].used==YES){
+//////						if(planes[i].flight->used==YES){
+//////							//					[self drawFlightpath:&flightpaths[i]];
+//////						}
+////					}
+////				}
+////
+//                for (int i = 0; i < MAX_PLANES; i++) {
+//                    if (planes[i].used == YES) {
+//                        [self drawPlane:&planes[i]];
+//                    }
+//                }
+//
+//                break;
 
-                break;
-
-            case APP_MODE_PLANE: {
-                int i = planeToTrack;
-                if (planes[i].used == YES) {
-                    flightpath_t *fp = &flightpaths[i];
-                    if (fp != NULL && fp->used) {
-                        [self drawAirport:fp->start];
-                        [self drawAirport:fp->end];
-                        [self drawFlightpath:&flightpaths[i]];
-                    }
-
-                    [self drawPlane:&planes[i]];
-
-                }
-            }
-
-
-                break;
+//            case APP_MODE_PLANE: {
+//                int i = planeToTrack;
+//                if (planes[i].used == YES) {
+//                    flightpath_t *fp = &flightpaths[i];
+//                    if (fp != NULL && fp->used) {
+//                        [self drawAirport:fp->start];
+//                        [self drawAirport:fp->end];
+//                        [self drawFlightpath:&flightpaths[i]];
+//                    }
+//
+//                    [self drawPlane:&planes[i]];
+//
+//                }
+//            }
+//
+//
+//                break;
 
             case APP_MODE_GAME_AIRPORT:
                 textScale = (1);
                 [self drawAirportGame];
                 break;
-            case APP_MODE_GAME_BALLOON:
-                textScale = (1);
-                [self drawBalloonGame];
-                break;
+//            case APP_MODE_GAME_BALLOON:
+//                textScale = (1);
+//                [self drawBalloonGame];
+//                break;
         }
 
         [self getTouchScale];
@@ -4083,7 +4083,7 @@ BOOL accelerometerEnabled = NO;
         result = 1;
     }
     else {
-        ////chattyNSLog(@"saveData(): Data saved successfully");
+        //chattyNSLog(@"saveData(): Data saved successfully");
     }
 
 
