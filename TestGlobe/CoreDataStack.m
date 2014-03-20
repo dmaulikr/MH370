@@ -1,10 +1,4 @@
-//
-//  CoreDataStack.m
-//  VAA
-//
-//  Created by waitea on 04/04/2013.
-//
-//
+
 
 #import "CoreDataStack.h"
 

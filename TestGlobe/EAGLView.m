@@ -1,10 +1,4 @@
-//
-//  EAGLView.m
-//  VAA
-//
-//  Created by Tag Games on 14/09/2009.
-//  Copyright Tag Games Ltd 2009. All rights reserved.
-//
+
 
 #import <QuartzCore/QuartzCore.h>
 

@@ -1,10 +1,3 @@
-//
-//  Aircraft.h
-//  VAA
-//
-//  Created by Calum McMinn on 30/09/2009.
-//  Copyright 2009 Tag Games. All rights reserved.
-//
 
 
 #ifndef AIRCRAFT_H

@@ -1,10 +1,4 @@
-//
-//  Flight.m
-//  VAA
-//
-//  Created by Calum McMinn on 30/09/2009.
-//  Copyright 2009 Tag Games. All rights reserved.
-//
+
 
 #import "Flight.h"
 

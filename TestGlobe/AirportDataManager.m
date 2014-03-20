@@ -1,12 +1,4 @@
-//
-//  AirportPersistenceManager.m
-//  VAA
-//
-//  Created by waitea on 02/04/2013.
-//
-//
 
-//#warning This code is should be revised. It was written with very little time remaining. The refresh CoreData in particular.
 
 #import "AirportDataManager.h"
 #import "AppDelegate.h"

@@ -1,10 +1,4 @@
-//
-//  EAGLView.h
-//  VAA
-//
-//  Created by Tag Games on 14/09/2009.
-//  Copyright Tag Games Ltd 2009. All rights reserved.
-//
+
 
 
 #import <UIKit/UIKit.h>

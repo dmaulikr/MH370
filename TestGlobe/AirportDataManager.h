@@ -1,10 +1,4 @@
-//
-//  AirportPersistenceManager.h
-//  VAA
-//
-//  Created by waitea on 02/04/2013.
-//
-//
+
 
 #import <Foundation/Foundation.h>
 

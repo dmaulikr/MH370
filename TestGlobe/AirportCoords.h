@@ -1,11 +1,4 @@
-/*
- *  airport_coords.h
- *  VAA
- *
- *  Created by Robert Henning on 01/10/2009.
- *  Copyright 2009 Tag Games Ltd. All rights reserved.
- *
- */
+
 
 #ifndef __AIRPORT_COORDS_H__
 #define __AIRPORT_COORDS_H__

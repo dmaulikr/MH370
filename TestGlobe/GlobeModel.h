@@ -1,11 +1,3 @@
-/*
- *  globe_model.h
- *  VAA
- *
- *  Created by Robert Henning on 28/09/2009.
- *  Copyright 2009 Tag Games Ltd. All rights reserved.
- *
- */
 
 
 

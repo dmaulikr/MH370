@@ -1,10 +1,4 @@
-//
-//  gameViewController.h
-//  VAA
-//
-//  Created by Fabien on 15/02/2010.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
+
 
 #import <UIKit/UIKit.h>
 #import "EAGLView.h"

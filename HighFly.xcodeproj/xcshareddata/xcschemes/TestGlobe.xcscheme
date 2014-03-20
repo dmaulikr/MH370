@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8B238B3F18D9C7840018B167"
-               BuildableName = "TestGlobe.app"
+               BuildableName = "HighFly.app"
                BlueprintName = "HighFly"
                ReferencedContainer = "container:HighFly.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8B238B5A18D9C7850018B167"
-               BuildableName = "TestGlobeTests.xctest"
+               BuildableName = "HighFlyTests.xctest"
                BlueprintName = "HighFlyTests"
                ReferencedContainer = "container:HighFly.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8B238B3F18D9C7840018B167"
-            BuildableName = "TestGlobe.app"
+            BuildableName = "HighFly.app"
             BlueprintName = "HighFly"
             ReferencedContainer = "container:HighFly.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8B238B3F18D9C7840018B167"
-            BuildableName = "TestGlobe.app"
+            BuildableName = "HighFly.app"
             BlueprintName = "HighFly"
             ReferencedContainer = "container:HighFly.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8B238B3F18D9C7840018B167"
-            BuildableName = "TestGlobe.app"
+            BuildableName = "HighFly.app"
             BlueprintName = "HighFly"
             ReferencedContainer = "container:HighFly.xcodeproj">
          </BuildableReference>

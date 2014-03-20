@@ -1,10 +1,4 @@
-//
-//  gameViewController.m
-//  VAA
-//
-//  Created by Fabien on 15/02/2010.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
-//
+
 
 #import "gameViewController.h"
 #import "AppDelegate.h"

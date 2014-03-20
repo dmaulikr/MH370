@@ -1,10 +1,4 @@
-//
-//  Aircraft.m
-//  VAA
-//
-//  Created by Calum McMinn on 30/09/2009.
-//  Copyright 2009 Tag Games. All rights reserved.
-//
+
 
 #define AIRCRAFT_ENABLE_PRINTS		0
 
