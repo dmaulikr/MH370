@@ -4083,7 +4083,7 @@ BOOL accelerometerEnabled = NO;
         result = 1;
     }
     else {
-        ////chattyNSLog(@"saveData(): Data saved successfully");
+        //chattyNSLog(@"saveData(): Data saved successfully");
     }
 
 
