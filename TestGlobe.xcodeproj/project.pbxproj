@@ -49,6 +49,10 @@
 		8B83ED9B18DB1165003342FE /* App_infoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B83ED9918DB1165003342FE /* App_infoViewController.m */; };
 		8B83ED9C18DB1165003342FE /* App_infoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B83ED9A18DB1165003342FE /* App_infoViewController.xib */; };
 		9E42F49E18DB2EA300FF6672 /* GlobeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E42F49D18DB2EA300FF6672 /* GlobeViewController.xib */; };
+		9E42F4A318DB3B8300FF6672 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E42F49F18DB3B8300FF6672 /* Button.png */; };
+		9E42F4A418DB3B8300FF6672 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E42F4A018DB3B8300FF6672 /* Default.png */; };
+		9E42F4A518DB3B8300FF6672 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E42F4A118DB3B8300FF6672 /* Icon.png */; };
+		9E42F4A618DB3B8300FF6672 /* globe.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E42F4A218DB3B8300FF6672 /* globe.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +126,10 @@
 		8B83ED9918DB1165003342FE /* App_infoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App_infoViewController.m; sourceTree = "<group>"; };
 		8B83ED9A18DB1165003342FE /* App_infoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = App_infoViewController.xib; sourceTree = "<group>"; };
 		9E42F49D18DB2EA300FF6672 /* GlobeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GlobeViewController.xib; sourceTree = "<group>"; };
+		9E42F49F18DB3B8300FF6672 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = "<group>"; };
+		9E42F4A018DB3B8300FF6672 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9E42F4A118DB3B8300FF6672 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9E42F4A218DB3B8300FF6672 /* globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globe.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,7 +205,10 @@
 		8B238B4918D9C7840018B167 /* TestGlobe */ = {
 			isa = PBXGroup;
 			children = (
-				9E42F49D18DB2EA300FF6672 /* GlobeViewController.xib */,
+				9E42F49F18DB3B8300FF6672 /* Button.png */,
+				9E42F4A018DB3B8300FF6672 /* Default.png */,
+				9E42F4A118DB3B8300FF6672 /* Icon.png */,
+				9E42F4A218DB3B8300FF6672 /* globe.png */,
 				8B238BBC18DA12320018B167 /* Tweets.xcdatamodeld */,
 				8B238BB918DA0B4D0018B167 /* CoreDataStack.h */,
 				8B238BBA18DA0B4D0018B167 /* CoreDataStack.m */,
@@ -227,6 +238,7 @@
 				8B238B5318D9C7840018B167 /* AppDelegate.m */,
 				8B238B7218D9C7AA0018B167 /* GlobeViewController.h */,
 				8B238B7318D9C7AA0018B167 /* GlobeViewController.m */,
+				9E42F49D18DB2EA300FF6672 /* GlobeViewController.xib */,
 				8B238B7A18D9CBB40018B167 /* GlobeModel.h */,
 				8B238B7B18D9CC320018B167 /* AirportCoords.h */,
 				8B238B7C18D9CC550018B167 /* TagGraphicsfont.h */,
@@ -345,15 +357,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E42F49E18DB2EA300FF6672 /* GlobeViewController.xib in Resources */,
+				9E42F4A318DB3B8300FF6672 /* Button.png in Resources */,
 				8B238BB018D9F0A50018B167 /* maingfx.png in Resources */,
 				8B238BB218D9F26A0018B167 /* AirportData.plist in Resources */,
 				8B238BAE18D9F0A50018B167 /* globe.png in Resources */,
+				9E42F4A618DB3B8300FF6672 /* globe.png in Resources */,
 				8B238B4E18D9C7840018B167 /* InfoPlist.strings in Resources */,
 				8B238BAC18D9F0A50018B167 /* globe_shine_light.png in Resources */,
 				8B238BAF18D9F0A50018B167 /* maingfx.bin in Resources */,
 				8B238BAD18D9F0A50018B167 /* globe_shine.png in Resources */,
 				8B238BAB18D9F0A50018B167 /* font.png in Resources */,
 				8B238BC018DA15BC0018B167 /* AirportDataPrimaryOnly.plist in Resources */,
+				9E42F4A418DB3B8300FF6672 /* Default.png in Resources */,
+				9E42F4A518DB3B8300FF6672 /* Icon.png in Resources */,
 				8B83ED9C18DB1165003342FE /* App_infoViewController.xib in Resources */,
 				8B238B5618D9C7840018B167 /* Images.xcassets in Resources */,
 			);

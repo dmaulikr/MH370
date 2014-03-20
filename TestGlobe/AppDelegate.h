@@ -10,7 +10,7 @@
 @class EAGLView;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
-       EAGLView					*glView;
+       EAGLView	*glView;
 
 }
 @property (strong, nonatomic) UIWindow *window;

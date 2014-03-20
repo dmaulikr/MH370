@@ -171,7 +171,9 @@
 - (void) showFindRichardResult:(int)inScore withHighScore:(int)inHighScore
 {
 	//todo Cancel pressed allow user to select games!
-	[self showCustomAlert:[NSString stringWithFormat:@"     Out of Time!\n     Your score: %d",inScore]  withButton1:@"Quit" withButton1:@"Restart" ];
+	//[self showCustomAlert:[NSString stringWithFormat:@"     Out of Time!\n     Your score: %d",inScore]  withButton1:@"Quit" withButton1:@"Restart" ];
+    alert = [[UIAlertView alloc] initWithTitle:@"Your Score" message:[NSString stringWithFormat:@"     Out of Time!\n     Your score: %d",inScore] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 

@@ -43,7 +43,7 @@
 	
         if (self.Game == nil) {
             GameViewController * controller = [[GameViewController alloc]initWithGame:0];
-            controller.navigationController.navigationBarHidden =TRUE;
+            //controller.navigationController.navigationBarHidden =FALSE;
             
             self.Game = controller;
             [controller release];
@@ -52,8 +52,8 @@
         else {
             [self.Game initGame:0];
         }
-       // [self.navigationController pushViewController:self.Game animated:YES];
-    [self presentViewController:self.Game animated:NO completion:nil];
+        [self.navigationController pushViewController:self.Game animated:YES];
+    //[self presentViewController:self.Game animated:NO completion:nil];
    
 }
 
