@@ -940,7 +940,7 @@ BOOL accelerometerEnabled = NO;
     appMode = APP_MODE_GAME_AIRPORT;
     gameState = GS_AIRPORT_INTRO;
     gameScore = 0;
-    gameTimer = 30000;
+    gameTimer = 10000;
 }
 
 - (void)processAirportGame {
@@ -1078,7 +1078,7 @@ BOOL accelerometerEnabled = NO;
 
             [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
             [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
-            [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
+            //[self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
 
            // [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
 
@@ -1101,7 +1101,7 @@ BOOL accelerometerEnabled = NO;
             }
 
 
-            [self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_thermometer1 + gameTemperature] X:/*_touches[rotateTouch].tx + 48*/295 Y:/*_touches[rotateTouch].ty - 48*/295 Z:0 SCALE:0.35f RL:&rl_front];
+            //[self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_thermometer1 + gameTemperature] X:/*_touches[rotateTouch].tx + 48*/295 Y:/*_touches[rotateTouch].ty - 48*/295 Z:0 SCALE:0.35f RL:&rl_front];
 
           //  [self drawTagSpritePoint:&ts_main[GRAPHICS_maingfx_thermometer1 + gameTemperature] X:/*_touches[rotateTouch].tx + 48*/295 Y:/*_touches[rotateTouch].ty - 48*/295 Z:0 SCALE:0.35f RL:&rl_front];
 
@@ -1117,13 +1117,6 @@ BOOL accelerometerEnabled = NO;
             [self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
             [self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
             [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
-
-          //  [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_Brandson] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
-           // [self drawSpriteOnGlobe:&ts_main[GRAPHICS_maingfx_brandstar1 + (bransonAnimation >> 2)] atN:airports[gameAirport].north atE:airports[gameAirport].east resultSprite:&airports[gameAirport].sprite];
-            //		[self drawNumber:(gameTimer/1000) X:32 Y:32 RL:&rl_gui];
-    //[self drawNumber:(gameTimer / 1000) X:32 Y:10 RL:&rl_gui];
-            //[self drawNumber:gameScore X:256 Y:10 RL:&rl_gui];
-           // [self drawString:[airports[gameAirport].name cStringUsingEncoding:NSUTF8StringEncoding] X:134 + 10 Y:10 RL:&rl_gui];
 
             gameTemperature = 0;
             break;
@@ -1145,17 +1138,17 @@ BOOL accelerometerEnabled = NO;
 }
 
 
-- (void)initBalloonGame {
-    globeMode = GLOBE_MODE_TARGET;
-    appMode = APP_MODE_GAME_BALLOON;
-    gameState = GS_BALLOON_INTRO;
-    gameScore = 0;
-    gameTimer = 60000;
-    gameMaxObjectSpeed = 0.0005;
-    gameObjectCount = 24;
-    gameAirport = -1;
-
-}
+//- (void)initBalloonGame {
+//    globeMode = GLOBE_MODE_TARGET;
+//    appMode = APP_MODE_GAME_BALLOON;
+//    gameState = GS_BALLOON_INTRO;
+//    gameScore = 0;
+//    gameTimer = 60000;
+//    gameMaxObjectSpeed = 0.0005;
+//    gameObjectCount = 24;
+//    gameAirport = -1;
+//
+//}
 
 - (void)setupObjectsForBalloonGame {
 //    if (gameAirport != -1) {

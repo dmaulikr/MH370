@@ -21,7 +21,7 @@
     
     GlobeViewController  *objGlobeViewController=[[GlobeViewController alloc] initWithNibName:@"GlobeViewController" bundle:[NSBundle mainBundle]];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:objGlobeViewController];
-    [self.navigationController setNavigationBarHidden:YES];
+    //[self.navigationController setNavigationBarHidden:YES];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     return YES;
