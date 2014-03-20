@@ -155,21 +155,19 @@
 	[self nextGameState];
 }
 
-- (void) showBalloonWin
-{
-	//todo Cancel pressed allow user to select games!
-	[self showCustomAlert:@"Richard has safely arrived\nat his goal. Are you ready\nto try a more difficult trip?"  withButton1:@"Quit" withButton1:@"Continue" ];
-	airport = false;
-}
+//- (void) showBalloonWin {
+//	//todo Cancel pressed allow user to select games!
+//	[self showCustomAlert:@"Richard has safely arrived\nat his goal. Are you ready\nto try a more difficult trip?"  withButton1:@"Quit" withButton1:@"Continue" ];
+//	airport = false;
+//}
 
 
-- (void) showBalloonLose:(int)inScore withHighScore:(int)inHighScore
-{
-	//todo Cancel pressed allow user to select games!
-	[self showCustomAlert:[NSString stringWithFormat:@"\nRichard's trip has been cut\nshort by bad weather.\nYour score: %d",inScore]  withButton1:@"Quit" withButton1:@"Restart" ];
-	airport = false;
-	//[self performSelector:@selector(hideAlert) withObject:nil afterDelay:3.0];
-}
+//- (void) showBalloonLose:(int)inScore withHighScore:(int)inHighScore {
+//	//todo Cancel pressed allow user to select games!
+//	[self showCustomAlert:[NSString stringWithFormat:@"\nRichard's trip has been cut\nshort by bad weather.\nYour score: %d",inScore]  withButton1:@"Quit" withButton1:@"Restart" ];
+//	airport = false;
+//	//[self performSelector:@selector(hideAlert) withObject:nil afterDelay:3.0];
+//}
 
 - (void) hideAlert {
 	[alert dismissWithClickedButtonIndex:0 animated:YES];
@@ -272,27 +270,27 @@
 
 -(void)showCustomAlert:(NSString*)text withButton1:(NSString*)text1 withButton1:(NSString*)text2
 {
-	self.alert = [[CustomAlertView alloc] init];
+	self.alert = [[UIAlertView alloc] initWithTitle:@"Your Score" message:[NSString stringWithFormat:@"%@%@", text1, text2] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
 	alert.delegate = self;
-	[alert show];	
+	[alert show];
 	
-	UILabel * titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 10, 280, 110)];
-	titlelabel.text = [NSString stringWithFormat:@"%@",text];
-	titlelabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:17];
-	titlelabel.numberOfLines = 0;
-	titlelabel.contentMode = UIViewContentModeCenter;
-	titlelabel.textColor = [UIColor whiteColor];
-	titlelabel.backgroundColor = [UIColor clearColor];
-	[alert.alertView addSubview:titlelabel];
-	//[titlelabel release];
-	
-//	UIWaracleSmallButton* cancel = [[UIWaracleSmallButton alloc]initWithFrame:CGRectMake(40,130, 100, 42)];									
+//	UILabel * titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 10, 280, 110)];
+//	titlelabel.text = [NSString stringWithFormat:@"%@",text];
+//	titlelabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:17];
+//	titlelabel.numberOfLines = 0;
+//	titlelabel.contentMode = UIViewContentModeCenter;
+//	titlelabel.textColor = [UIColor whiteColor];
+//	titlelabel.backgroundColor = [UIColor clearColor];
+//	[alert.alertView addSubview:titlelabel];
+//	//[titlelabel release];
+//	
+//	UIButton *cancel = [[UIButton alloc]initWithFrame:CGRectMake(40,130, 100, 42)];
 //	[cancel setTitle:text1 forState:UIControlStateNormal];
 //	[cancel addTarget:self action:@selector(quit)forControlEvents:UIControlEventTouchUpInside];
 //	[alert.alertView addSubview:cancel];
 //	[cancel release];
 //	
-//	UIWaracleSmallButton* showSchedule = [[UIWaracleSmallButton alloc]initWithFrame:CGRectMake(150,130, 100, 42)];
+//	UIButton* showSchedule = [[UIButton alloc]initWithFrame:CGRectMake(150,130, 100, 42)];
 //	[showSchedule setTitle:text2 forState:UIControlStateNormal];
 //	[showSchedule addTarget:self action:@selector(continueGame)forControlEvents:UIControlEventTouchUpInside];
 //	[alert.alertView addSubview:showSchedule];

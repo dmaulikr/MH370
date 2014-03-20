@@ -15,15 +15,15 @@
 //drawing text to the screen it does not deal with rendering the game only managing its states.
 
 
-@interface GameViewController : UIViewController <CustomAlertViewDelegate>{
+@interface GameViewController : UIViewController <UIAlertViewDelegate>{
 	EAGLView	*glView;// the actual view the globe is rendered in
 	int gameMode;//0= balloon 1 = airport
-	CustomAlertView* alert;
+	UIAlertView* alert;
 	bool airport;
 }
 
 @property(nonatomic,retain)	IBOutlet EAGLView *glView;
-@property(nonatomic,retain)	CustomAlertView* alert;
+@property(nonatomic,retain)	UIAlertView* alert;
 
 - (id) initWithGame:(int)gMode;
 - (void) initGame:(int)gMode;
