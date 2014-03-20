@@ -934,7 +934,7 @@ BOOL accelerometerEnabled = NO;
     appMode = APP_MODE_GAME_AIRPORT;
     gameState = GS_AIRPORT_INTRO;
     gameScore = 0;
-    gameTimer = 10000;
+    gameTimer = 60000;
 }
 
 - (void)processAirportGame {
